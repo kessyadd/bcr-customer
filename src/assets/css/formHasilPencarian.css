@@ -1,0 +1,48 @@
+@media only screen and (max-width: 600px) {
+  .hp-card {
+    margin-left: 3em;
+    margin-right: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  .hp-container {
+    position: absolute;
+    top: 245px;
+    z-index: 1;
+  }
+  #spn {
+    margin: 18em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .hp-card {
+    margin-left: 3em;
+    margin-right: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  .hp-container {
+    position: absolute;
+    top: 245px;
+    z-index: 1;
+  }
+  #spn {
+    margin: 18em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .hp-card {
+    margin-left: 10em;
+    margin-right: 10em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  .hp-container {
+    position: absolute;
+    top: 245px;
+    z-index: 1;
+  }
+  #spn {
+    margin: 2em;
+  }
+}

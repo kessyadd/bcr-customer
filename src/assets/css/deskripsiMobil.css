@@ -1,0 +1,42 @@
+.card_right .p_jumlah_orang {
+  color: #8a8a8a;
+}
+
+li {
+  color: #8a8a8a;
+  font-weight: bold;
+}
+
+h6 {
+  font-weight: bold;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .d-row {
+    margin-left: "5rem";
+    margin-right: "5rem";
+    padding-top: "2em";
+    padding-bottom: "3em";
+  }
+}
+@media only screen and (max-width: 768px) {
+  .d-row {
+    margin-left: "5rem";
+    margin-right: "5rem";
+    padding-top: "2em";
+    padding-bottom: "3em";
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .d-row {
+    margin-left: "5rem";
+    margin-right: "5rem";
+    padding-top: "2em";
+    padding-bottom: "3em";
+  }
+}

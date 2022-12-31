@@ -1,0 +1,16 @@
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer img {
+  margin-right: 0.75em;
+}
+
+footer .menu li {
+  font-weight: normal;
+}
+
+.color-black {
+  color: black;
+}

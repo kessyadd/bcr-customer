@@ -1,0 +1,22 @@
+.owl-carousel .item .testimonial-card {
+  background-color: #f1f3ff;
+  border: none;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 2rem;
+}
+
+button.owl-next {
+  background-color: black;
+}
+
+#tes-photo {
+  display: flex;
+}
+
+#ph {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+}
