@@ -5,6 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import "../assets/css/navigation.css";
+import ButtonSignIn from "./ButtonSignIn";
+import ButtonRegister from "./ButtonRegister";
+import Auth from "../utils/Auth";
+import ButtonSignOut from "./ButtonSignOut";
 
 const expand = "sm";
 
@@ -51,6 +55,15 @@ const Navigation = () => {
                 <Nav.Link href="/#faq" className="color-black">
                   FAQ
                 </Nav.Link>
+                <span className="mx-2"></span>
+                {Auth.isAuthorization() ? (
+                  <ButtonSignOut />
+                ) : (
+                  <>
+                    <ButtonSignIn />
+                    <ButtonRegister />
+                  </>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
