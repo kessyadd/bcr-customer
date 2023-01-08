@@ -61,7 +61,7 @@ const FormHasilPencarian = (props) => {
       maxPrice,
     };
 
-    const result = await APICar.searchCar(payload);
+    const result = await APICar.getCarList(payload);
     if (result.data) {
       navigate("/hasil-pencarian", {
         state: { carData: result.data.cars, payload: payload },
