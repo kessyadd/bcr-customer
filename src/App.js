@@ -7,6 +7,7 @@ import DetailMobil from "./pages/DetailMobil";
 import Navigation from "./components/Navigation";
 import Foot from "./components/Foot";
 import { Container } from "react-bootstrap";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/cari-mobil" element={<CariMobil />} />
             <Route path="/hasil-pencarian" element={<HasilPencarian />} />
             <Route path="/detil-mobil/:carId" element={<DetailMobil />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </Container>
         <Foot />
