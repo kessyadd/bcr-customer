@@ -9,28 +9,17 @@ import "../assets/css/formHasilPencarian.css";
 
 const HasilPencarian = () => {
   const location = useLocation();
-  console.log(
-    `halaman hasil pencarian ${JSON.stringify(
-      location.state.carData
-    )} payload ${JSON.stringify(location.state.payload)}`
-  );
+  console.log(`halaman hasil pencarian ${JSON.stringify(location.state.carData)} payload ${JSON.stringify(location.state.payload)}`);
   useEffect(() => {
     document.title = "Binar Car Rental - Hasil Pencarian";
   }, []);
   return (
     <>
       <SecHero />
-      <FormHasilPencarian
-        isEdit={true}
-        isDisabled={false}
-        payloadCard={location.state.payload}
-      />
+      <FormHasilPencarian isEdit={true} isDisabled={false} payloadCard={location.state.payload} />
       <section className="m-5 p-3"></section>
       <Container id="spn" />
-      <CardCar
-        carDataCard={location.state.carData}
-        payloadCard={location.state.payload}
-      />
+      <CardCar carDataCard={location.state.carData} payloadCard={location.state.payload} />
     </>
   );
 };
