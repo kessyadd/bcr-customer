@@ -18,7 +18,7 @@ const DeskripsiMobil = () => {
   useEffect(() => {
     // declare the data fetching function
     const fetchData = async () => {
-      const res = await APICar.findCarById(params.carId);
+      const res = await APICar.getCarDetails(params.carId);
       setCar(res.data);
     };
     // call the function
