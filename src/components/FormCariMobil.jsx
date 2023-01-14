@@ -54,8 +54,8 @@ const FormCariMobil = () => {
       minPrice,
       maxPrice,
     };
-
-    const result = await APICar.searchCar(payload);
+    console.log(payload);
+    const result = await APICar.getCarList(payload);
     if (result.data) {
       console.log(payload);
       // setCars(result.data.cars);
