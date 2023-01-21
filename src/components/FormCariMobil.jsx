@@ -8,11 +8,12 @@ import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import APICar from "../apis/customer/APICar";
 import "../assets/css/formCariMobil.css";
+import { useDispatch } from "react-redux";
+import { searchCar, filters } from "../store/features/searchCarSlice";
 
 const FormCariMobil = () => {
   const navigate = useNavigate();
-
-  // const [cars, setCars] = useState([]);
+  const dispatch = useDispatch();
 
   const handleSearchCar = async (e) => {
     e.preventDefault();
@@ -54,14 +55,17 @@ const FormCariMobil = () => {
       minPrice,
       maxPrice,
     };
-    console.log(payload);
-    const result = await APICar.getCarList(payload);
-    if (result.data) {
-      console.log(payload);
-      // setCars(result.data.cars);
-      navigate("/hasil-pencarian", {
-        state: { carData: result.data.cars, payload: payload },
-      });
+    dispatch(filters(payload));
+
+    try {
+      const result = await APICar.getCarList(payload);
+      if (result.data) {
+        dispatch(searchCar(result.data.cars));
+        navigate("/hasil-pencarian");
+      }
+    } catch (error) {
+      const err = new Error(error);
+      console.log(err);
     }
   };
 
