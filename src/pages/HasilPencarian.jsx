@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import "../assets/css/formHasilPencarian.css";
 
 const HasilPencarian = () => {
+
   useEffect(() => {
     document.title = "Binar Car Rental - Hasil Pencarian";
   }, []);
