@@ -8,9 +8,14 @@ import User from "../assets/img/fi_users.png";
 import { useParams } from "react-router-dom";
 import APICar from "../apis/customer/APICar";
 import "../assets/css/deskripsiMobil.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+
   const params = useParams();
   // const [carCategory, setCarCategory] = useState();
   // console.log(`deskripsi ${params.carId}`);
@@ -97,6 +102,19 @@ const DeskripsiMobil = () => {
                   {car.category === "Medium" && "4 - 6 orang"}
                   {car.category === "large" && "6 - 8 orang"}
                 </p>
+                <DatePicker
+                  selectsRange={true}
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={new Date()}
+                  onChange={(update) => {
+                    setDateRange(update);
+                  }}
+                  dateFormat="dd MMMM yyyy"
+                  isClearable={true}
+                  placeholderText="Pilih tanggal mulai dan tanggal akhir sewa"
+                  showDisabledMonthNavigation
+                />
                 <Row>
                   <Col>
                     <p>Total</p>
