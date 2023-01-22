@@ -8,15 +8,18 @@ import Container from "react-bootstrap/Container";
 import APICar from "../apis/customer/APICar";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/formHasilPencarian.css";
+import { useDispatch, useSelector } from "react-redux";
+import { searchCar, filters } from "../store/features/searchCarSlice";
 
 const FormHasilPencarian = (props) => {
-  const payload = props.payloadCard;
-  let textPlaceholder = payload.name;
-  let optCategory = payload.category;
-  let optStatus = payload.isRented;
-  let optPriceMin = payload.minPrice;
-  let optPriceMax = payload.maxPrice;
+  const car = useSelector((state) => state.searchCar);
+  let textPlaceholder = car.filterData.name;
+  let optCategory = car.filterData.category;
+  let optStatus = car.filterData.isRented;
+  let optPriceMin = car.filterData.minPrice;
+  let optPriceMax = car.filterData.maxPrice;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEditSearchCar = async (e) => {
     e.preventDefault();
@@ -61,11 +64,17 @@ const FormHasilPencarian = (props) => {
       maxPrice,
     };
 
-    const result = await APICar.getCarList(payload);
-    if (result.data) {
-      navigate("/hasil-pencarian", {
-        state: { carData: result.data.cars, payload: payload },
-      });
+    dispatch(filters(payload));
+
+    try {
+      const result = await APICar.getCarList(payload);
+      if (result.data) {
+        dispatch(searchCar(result.data.cars));
+        navigate("/hasil-pencarian");
+      }
+    } catch (error) {
+      const err = new Error(error);
+      console.log(err);
     }
   };
 
