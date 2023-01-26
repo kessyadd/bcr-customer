@@ -1,0 +1,193 @@
+:root {
+    font-size: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    --primary-blue : #0D28A6;
+}
+
+.blue {
+    background-color: #0D28A6;;
+}
+
+.abu {
+    color: #FFFFFF;;
+}
+
+.container {
+    padding-left: 115px;
+    padding-right: 0;
+}
+
+.container h1 {
+    font-size: 48px;
+    font-weight: 500;
+    opacity: 0.7;
+    padding-top: 112px;
+    line-height: normal;
+}
+
+.container img {
+    padding-top: 49px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.small {
+    font-size: 80%;
+    text-align: center;
+}
+
+.split-screen {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+.left, .right{
+    max-height: 100vh;
+
+}
+
+.left{
+    display: flex;
+    justify-content: center;
+}
+
+.right{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.left .copy {
+    color: white;
+    text-align: center;
+}
+
+.left p {
+    font-weight: 400;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width: 899px) {
+    .split-screen {
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .left, .right {
+        display: flex;
+        width: 50%;
+        height: 100%;
+    }
+    
+}
+
+* {
+    font-family: Arial;
+}
+
+.login {
+    height: 100vh;
+}
+
+h1 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+.login-form {
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form h1 {
+    margin-top: 32px;
+}
+
+.login-form p {
+    margin-top: 32px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.login-form .form-group-first {
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.login-form .form-group-second{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.login-form .form-group-last {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.login-form label {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #222222;
+
+}
+
+.login-form input {
+    width: 370px;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 9px;
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
+.login-form :placeholder-shown {
+    font-family: 'Arial';
+    color: #A5A5A5;
+}
+
+.login-form .signin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
+    margin-top: 31.75px;
+    width: 370px;
+    height: 36px;
+    background: #0D28A6;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+}
+
+.login-form p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.login-form span {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
