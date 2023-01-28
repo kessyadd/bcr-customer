@@ -2,13 +2,14 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import BackButton from "../components/BackButton";
+
 import ChoosePayment from "../components/ChoosePayment";
+
+import TotalCost from "../components/TotalCost";
 
 const Payment = () => {
   return (
-    <div>
+    <div className="mx-auto">
       {/* <Container fluid>
         <Row>
           <BackButton />
@@ -70,7 +71,7 @@ const Payment = () => {
           <ChoosePayment />
         </Col>
         <Col xs={6} md={4}>
-          xs=6 md=4
+          <TotalCost />
         </Col>
       </Row>
     </div>
