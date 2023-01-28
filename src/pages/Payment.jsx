@@ -10,31 +10,6 @@ import TotalCost from "../components/TotalCost";
 const Payment = () => {
   return (
     <div className="mx-auto">
-      {/* <Container fluid>
-        <Row>
-          <BackButton />
-          <h1 className="fs-5 d-inline ">Pembayaran</h1>
-        </Row>
-        <Row>
-          <Card>
-            <Card.Body>
-              <Col>
-                <Row>
-                  <h1 className="fs-4">Detail Pesananmu</h1>
-                </Row>
-                <h1 className="   fw-semibold fs-5">Nama/Tipe Mobil</h1>
-                <h1 className="fw-light fs-6">Innova</h1>
-              </Col>
-              <Col className="text-end">
-                <h1>kategori</h1>
-              </Col>
-            </Card.Body>
-          </Card>
-        </Row>
-        <Col>
-          <h1>s</h1>
-        </Col>
-      </Container> */}{" "}
       <Card>
         <Row className="m-5">
           <Col lg={3} sm={12} className="pt-3">
