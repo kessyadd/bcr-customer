@@ -1,0 +1,29 @@
+.pemesanan {
+  max-width: 1042px;
+  height: 320px;
+  max-height: ;
+}
+
+.choose-payment {
+  position: absolute;
+  width: 605px;
+  height: 320px;
+  left: 441px;
+  top: 352px;
+}
+
+.total {
+  width: 405px;
+  height: 546px;
+  right: 278px;
+  bottom: 124px;
+}
+
+.accordion {
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 15px;
+  margin-top: 0 !important;
+  border: none;
+  margin-top: 200px;
+}

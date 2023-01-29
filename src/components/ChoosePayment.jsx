@@ -1,5 +1,6 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import "../assets/css/payment.css";
 
 const ChoosePayment = () => {
   const ShowChecklist = () => {
@@ -13,7 +14,7 @@ const ChoosePayment = () => {
   }
 
   return (
-    <div className="m-5">
+    <div className="m-5 pilih-transfer">
       <ListGroup className="choose-payment">
         <ListGroup.Item disabled variant="light">
           <h5 className="fs-5 fw-bold">Pilih Bank Transfer</h5>
