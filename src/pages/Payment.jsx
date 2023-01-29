@@ -13,31 +13,16 @@ const Payment = () => {
       <Card>
         <Row className="m-5">
           <Col lg={3} sm={12} className="pt-3">
-            <h1 className="fs-4">Detail Pesananmu</h1>
-            <h1 className="   fw-semibold fs-5">Nama/Tipe Mobil</h1>
-            <h1 className="fw-light fs-6">Innova</h1>
+            d
           </Col>
           <Col lg={3} sm={12} className="pt-3">
-            <ul className="p-0 list-unstyled menu">
-              <li className="mb-3">
-                <a href="/#ourServices">Our Services</a>
-              </li>
-              <li className="mb-3">
-                <a href="/#whyUs">Why Us</a>
-              </li>
-              <li className="mb-3">
-                <a href="/#testimonial">Testimonial</a>
-              </li>
-              <li className="mb-3">
-                <a href="/#faq">FAQ</a>
-              </li>
-            </ul>
+            d
           </Col>
           <Col lg={3} sm={12} className="pt-3">
-            <p>Connect With Us</p>
+            d
           </Col>
           <Col lg={3} sm={12} className="pt-3">
-            <p>Copyright Binar 2022</p>
+            d
           </Col>
         </Row>
       </Card>

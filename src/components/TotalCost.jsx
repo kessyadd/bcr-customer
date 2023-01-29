@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Stack from "react-bootstrap/Stack";
 import ListGroup from "react-bootstrap/ListGroup";
 import { ListGroupItem } from "react-bootstrap";
 
@@ -12,12 +11,6 @@ const RincianBiaya = () => {
         <Card.Body>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <Stack gap={3}>
-                <div className="bg-light ">First item</div>
-                <div className="bg-light ">Second item</div>
-                <div className="bg-light ">Third item</div>
-              </Stack>
-              );
               <h1>nama mobil</h1>
               <h5>kapasitas</h5>
               <div className="d-flex">
