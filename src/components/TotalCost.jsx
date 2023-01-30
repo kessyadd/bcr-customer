@@ -1,53 +1,52 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Stack from "react-bootstrap/Stack";
 import ListGroup from "react-bootstrap/ListGroup";
-import { ListGroupItem } from "react-bootstrap";
+import { Accordion, ListGroupItem } from "react-bootstrap";
+import "../assets/css/payment.css";
 
 const RincianBiaya = () => {
   return (
     <div className="m-5">
-      <Card>
+      <Card className="total">
         <Card.Body>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <Stack gap={3}>
-                <div className="bg-light ">First item</div>
-                <div className="bg-light ">Second item</div>
-                <div className="bg-light ">Third item</div>
-              </Stack>
-              );
-              <h1>nama mobil</h1>
-              <h5>kapasitas</h5>
-              <div className="d-flex">
-                <h5>Total</h5>
-                <h5 className="text end">harga</h5>
-              </div>
+              <h6 className="fw-bold">Innova</h6>
+              <h6 className="text-black-50">6 - 8 orang</h6>
               <div>
-                <h5>harga</h5>
-                <ul>
-                  <li>Sewa Mobil Rp.500.000 x 7 Hari</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Biaya Lainnya</h5>
-                <ul>
-                  <li>Pajak</li>
-                  <li>Biaya makan sopir</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Belum Termasuk</h5>
-                <ul>
-                  <li>Bensin</li>
-                  <li>Tol parkir</li>
-                </ul>
+                <Accordion className="accordion p-1" defaultActiveKey={["0"]} alwaysOpen style={{ border: 0 }}>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Total</Accordion.Header>
+                    <Accordion.Body>
+                      <div>
+                        <h6 className="fw-bold">Harga</h6>
+                        <ul>
+                          <li className="fs-6 fw-normal text-dark">Sewa Mobil Rp.500.000 x 7 Hari</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="fw-bold">Biaya Lainnya</h6>
+                        <ul>
+                          <li className="fs-6 fw-normal text-dark">Pajak</li>
+                          <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
+                        </ul>
+                      </div>
+                      <h6 className="fw-bold">Belum Termasuk</h6>
+                      <ul>
+                        <li className="fs-6 fw-normal text-dark">Bensin</li>
+                        <li className="fs-6 fw-normal text-dark">Tol parkir</li>
+                      </ul>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
               </div>
             </ListGroup.Item>
             <ListGroupItem>
-              <h1>Total</h1>
-              <h5>harga</h5>
+              <div>
+                <h6 className="text-start fw-bold">Total</h6>
+                <h6 className="text-end fw-bold">Rp 3.500.000</h6>
+              </div>
               <div className="d-grid">
                 <Button variant="success">Bayar</Button>{" "}
               </div>
