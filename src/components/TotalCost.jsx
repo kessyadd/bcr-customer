@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Accordion, ListGroupItem, Container } from "react-bootstrap";
+import { Accordion, ListGroupItem } from "react-bootstrap";
 import "../assets/css/payment.css";
 
 const RincianBiaya = () => {
@@ -17,13 +17,7 @@ const RincianBiaya = () => {
               <div>
                 <Accordion className="accordion p-1" defaultActiveKey={["0"]} alwaysOpen style={{ border: 0 }}>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>
-                      <Container>
-                        <h6 className="fw-bold">Innova</h6>
-                        <h6 className="text-black-50">6 - 8 orang</h6>
-                      </Container>
-                      Total
-                    </Accordion.Header>
+                    <Accordion.Header>Total</Accordion.Header>
                     <Accordion.Body>
                       <div>
                         <h6 className="fw-bold">Harga</h6>
