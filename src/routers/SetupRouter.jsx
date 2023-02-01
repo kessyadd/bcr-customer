@@ -9,6 +9,7 @@ import DetailMobil from "./pages/DetailMobil";
 import Navigation from "./components/Navigation";
 import Foot from "./components/Foot";
 import { Container } from "react-bootstrap";
+import SignIn from "../pages/SignIn";
 
 const SetupRouter = () => {
   return (

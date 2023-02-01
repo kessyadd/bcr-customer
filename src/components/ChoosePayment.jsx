@@ -25,38 +25,18 @@ const ChoosePayment = () => {
           {["radio"].map((type) => (
             <div key={`default-${type}`} className="mb-3">
               <ListGroup.Item variant="light">
-                <Form.Check type={type} id={`default-${type}`} label={`BCA Transfer`} />
+                <Form.Check label="BCA Transfer" name="group1" type={type} id={`BCA Transfer`} />
               </ListGroup.Item>
               <ListGroup.Item variant="light">
-                <Form.Check type={type} id={`default-${type}`} label={`BNI Transfer`} />
+                <Form.Check label="BNI Transfer" name="group1" type={type} id={`BNI Transfer`} />
               </ListGroup.Item>
               <ListGroup.Item variant="light">
-                <Form.Check type={type} id={`default-${type}`} label={`Mandiri Transfer`} />
+                <Form.Check label="Mandiri Transfer" name="group1" type={type} id={`inline-${type}-2`} />
               </ListGroup.Item>
             </div>
           ))}
         </Form>
       </ListGroup>
-
-      <Form>
-        {["checkbox", "radio"].map((type) => (
-          <div key={`default-${type}`} className="mb-3">
-            <Form.Check type={type} id={`default-${type}`} label={`default ${type}`} />
-            <Form.Check type={type} id={`default-${type}`} label={`default ${type}`} />
-            <Form.Check type={type} id={`default-${type}`} label={`default ${type}`} />
-          </div>
-        ))}
-      </Form>
-
-      <Form>
-        {["checkbox", "radio"].map((type) => (
-          <div key={`inline-${type}`} className="mb-3">
-            <Form.Check label="1" name="group1" type={type} id={`inline-${type}-1`} />
-            <Form.Check label="2" name="group1" type={type} id={`inline-${type}-2`} />
-            <Form.Check disabled label="3 (disabled)" type={type} id={`inline-${type}-3`} />
-          </div>
-        ))}
-      </Form>
     </div>
   );
 };
