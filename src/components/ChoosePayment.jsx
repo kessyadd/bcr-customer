@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/ListGroup";
 import "../assets/css/payment.css";
 
@@ -20,15 +21,21 @@ const ChoosePayment = () => {
           <h5 className="fs-5 fw-bold">Pilih Bank Transfer</h5>
           <h5 className="fs-6">Kamu bisa membayar dengan transfer melalui ATM, Internet Banking atau Mobile Banking</h5>
         </ListGroup.Item>
-        <ListGroup.Item className="bca" action onClick={isChecked} variant="light">
-          BCA Transfer
-        </ListGroup.Item>
-        <ListGroup.Item action variant="light">
-          BNI Transfer
-        </ListGroup.Item>
-        <ListGroup.Item action onClick={ShowChecklist} variant="light">
-          Mandiri Transfer
-        </ListGroup.Item>
+        <Form>
+          {["radio"].map((type) => (
+            <div key={`default-${type}`} className="mb-3">
+              <ListGroup.Item variant="light">
+                <Form.Check label="BCA Transfer" name="group1" type={type} id={`BCA Transfer`} />
+              </ListGroup.Item>
+              <ListGroup.Item variant="light">
+                <Form.Check label="BNI Transfer" name="group1" type={type} id={`BNI Transfer`} />
+              </ListGroup.Item>
+              <ListGroup.Item variant="light">
+                <Form.Check label="Mandiri Transfer" name="group1" type={type} id={`inline-${type}-2`} />
+              </ListGroup.Item>
+            </div>
+          ))}
+        </Form>
       </ListGroup>
     </div>
   );
