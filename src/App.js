@@ -13,6 +13,7 @@ import store from "./store";
 import SignIn from "./pages/SignIn";
 import WithNav from "./components/WithNav";
 import WithoutNav from "./components/WithoutNav";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               </Route>
               <Route element={<WithoutNav />}>
                 <Route path="/sign-in" element={<SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
               </Route>
             </Routes>
           </Container>

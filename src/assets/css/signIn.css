@@ -10,3 +10,14 @@
   align-items: center;
   align-content: center;
 }
+
+.desktop {
+  background-image: url("../img/Group83.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  width: 938px;
+}
