@@ -4,18 +4,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../assets/css/signIn.css";
-import Desktop from "../assets/img/desktop.png";
-// import GrayButton from "../img/gray_rectangle.png";
+import Desktop from "../assets/img/Group83.png";
+import GrayButton from "../assets/img/rectangle.png";
 
 const SignIn = () => {
   return (
     <>
-      <div className="container">
-        <Container>
-          <Row>
-            <Col md={6} className="sign-in" style={{ width: 370 }}>
-              {/* <img src={GrayButton} alt="gray" /> */}
-              <div className="fw-bold fs-1">Welcome Back!</div>
+      <Container className="cotainer-fluid">
+        <Row>
+          <Col lg={6} className="sign-in">
+            <div className="d-inline-block">
+              <img src={GrayButton} alt="gray" />
+              <div className="fw-bold fs-2 mt-4 mb-4">Welcome Back!</div>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
@@ -30,21 +30,19 @@ const SignIn = () => {
                     Sign In
                   </Button>
                 </div>
-
-                <div className="mt-4 fw-bolder">
+                <h6 className="mt-4 fw-bolder justify-content-center">
                   Don’t have an account? <a href="#">Sign Up for free</a>
-                </div>
+                </h6>
               </Form>
-            </Col>
-            <Col className="binar-sign-in" style={{ width: "100%", height: "100%" }} md={6}>
-              <h1>Binar Car Rental</h1>
-              <div className="desktop">
-                <img src={Desktop} alt="desktop" />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            </div>
+          </Col>
+          <Col lg={6} className="binar-sign-in">
+            <div className="desktop">
+              <img src={Desktop} alt="desktop" />
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
