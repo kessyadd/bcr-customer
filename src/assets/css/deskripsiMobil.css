@@ -40,3 +40,22 @@ body {
     padding-bottom: "3em";
   }
 }
+
+.cardetail-right-desc-date-input-bg {
+  display: flex;
+  border: 1px solid #009c96;
+  border-radius: 2px;
+  padding: 9px 12px;
+  margin-top: 8px;
+}
+
+.cardetail-right-desc-date-bg {
+  margin-top: 16px;
+}
+
+.cardetail-right-desc-date-title-p {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
