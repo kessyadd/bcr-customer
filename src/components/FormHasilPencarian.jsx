@@ -1,23 +1,30 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import APICar from "../apis/customer/APICar";
+import { Form, Button, Col, Row, Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/formHasilPencarian.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filters,
+  fetchStatus,
+  resetCar,
+  setPage,
+} from "../store/features/searchCarSlice";
 
 const FormHasilPencarian = (props) => {
-  const payload = props.payloadCard;
-  let textPlaceholder = payload.name;
-  let optCategory = payload.category;
-  let optStatus = payload.isRented;
-  let optPriceMin = payload.minPrice;
-  let optPriceMax = payload.maxPrice;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  //set form value
+  const car = useSelector((state) => state.searchCar);
+  let defaultName = car.filterData[0].name;
+  let optCategory = car.filterData[0].category;
+  let optStatus = car.filterData[0].isRented;
+  let optPriceMin = car.filterData[0].minPrice;
+  let optPriceMax = car.filterData[0].maxPrice;
+  const page = 1;
+  const pageSize = 9;
+
+  //edit button onClick
   const handleEditSearchCar = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -59,14 +66,15 @@ const FormHasilPencarian = (props) => {
       isRented,
       minPrice,
       maxPrice,
+      page,
+      pageSize,
     };
-
-    const result = await APICar.getCarList(payload);
-    if (result.data) {
-      navigate("/hasil-pencarian", {
-        state: { carData: result.data.cars, payload: payload },
-      });
-    }
+    console.log(payload);
+    dispatch(setPage(page));
+    dispatch(filters(payload)); //set payload
+    dispatch(fetchStatus("loading")); //set fetch status
+    dispatch(resetCar([])); //reset car data
+    navigate("/hasil-pencarian");
   };
 
   return (
@@ -85,9 +93,8 @@ const FormHasilPencarian = (props) => {
                 <h5 className="fw-bold mb-4">Pencarianmu</h5>
                 <Form.Label>Nama Mobil</Form.Label>
                 <Form.Control
-                  placeholder={
-                    textPlaceholder ? textPlaceholder : "Ketik nama/tipe mobil"
-                  }
+                  placeholder="Ketik nama/tipe mobil"
+                  defaultValue={defaultName ? defaultName : ""}
                   type="text"
                   class="form-control"
                   disabled={props.isDisabled}

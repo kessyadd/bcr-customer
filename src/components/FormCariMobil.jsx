@@ -1,18 +1,18 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
+import { Form, Button, Col, Row, Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import APICar from "../apis/customer/APICar";
 import "../assets/css/formCariMobil.css";
+import { useDispatch } from "react-redux";
+import {
+  resetCar,
+  filters,
+  setPage,
+  fetchStatus,
+} from "../store/features/searchCarSlice";
 
 const FormCariMobil = () => {
   const navigate = useNavigate();
-
-  // const [cars, setCars] = useState([]);
+  const dispatch = useDispatch();
 
   const handleSearchCar = async (e) => {
     e.preventDefault();
@@ -21,6 +21,8 @@ const FormCariMobil = () => {
     const category = formData.get("category");
     let isRented = formData.get("isRented");
     const price = formData.get("price");
+    const page = 1;
+    const pageSize = 9;
 
     let minPrice = 0;
     let maxPrice = 0;
@@ -53,16 +55,14 @@ const FormCariMobil = () => {
       isRented,
       minPrice,
       maxPrice,
+      page,
+      pageSize,
     };
-    console.log(payload);
-    const result = await APICar.getCarList(payload);
-    if (result.data) {
-      console.log(payload);
-      // setCars(result.data.cars);
-      navigate("/hasil-pencarian", {
-        state: { carData: result.data.cars, payload: payload },
-      });
-    }
+    dispatch(setPage(page));
+    dispatch(filters(payload)); //set payload
+    dispatch(fetchStatus("loading")); //set fetch status
+    dispatch(resetCar([])); //reset car data
+    navigate("/hasil-pencarian");
   };
 
   const on = () => {

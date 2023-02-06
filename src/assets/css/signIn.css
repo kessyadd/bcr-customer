@@ -1,0 +1,23 @@
+/* body {
+  height: 2000px;
+} */
+
+.button-register {
+  background-color: #0d28a6;
+}
+
+.sign-in {
+  align-items: center;
+  align-content: center;
+}
+
+.desktop {
+  background-image: url("../img/Group83.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  width: 938px;
+}

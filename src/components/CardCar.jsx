@@ -6,24 +6,23 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const CardCar = (props) => {
-  const carData = props.carDataCard;
-  const payload = props.payloadCard;
+const CardCar = () => {
+  const car = useSelector((state) => state.searchCar);
+  console.log(car.carData);
 
   const navigate = useNavigate();
 
   const toDetilMobil = (id) => (e) => {
     e.preventDefault();
-    navigate(`/detil-mobil/${id}`, {
-      state: { payload: payload },
-    });
+    navigate(`/detil-mobil/${id}`);
   };
 
   return (
     <Container className="card-list">
       <Row id="card-car">
-        {carData.map((car) => (
+        {car.carData[0].map((car) => (
           <Col lg={4} md={6} sm={12} className="mb-4">
             <Card className="shadow-sm">
               <Card.Img
