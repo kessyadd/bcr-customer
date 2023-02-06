@@ -10,6 +10,7 @@ import APICar from "../apis/customer/APICar";
 import "../assets/css/deskripsiMobil.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { FiCalendar } from "react-icons/fi";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
@@ -51,9 +52,7 @@ const DeskripsiMobil = () => {
                 <h6 className="mb-4 fw-bold">Tentang Paket</h6>
                 <h6 className="fw-bold">Include</h6>
                 <ul>
-                  <li>
-                    Apa saja yang termasuk dalam paket misal durasi max 12 jam
-                  </li>
+                  <li>Apa saja yang termasuk dalam paket misal durasi max 12 jam</li>
                   <li>Sudah termasuk bensin selama 12 jam</li>
                   <li>Sudah termasuk Tiket Wisata</li>
                   <li>Sudah termasuk pajak</li>
@@ -61,31 +60,19 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold">Exclude</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>
-                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
-                    20.000/jam
-                  </li>
+                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
                 <h6 className="fw-bold">Refund, Reschedule, Overtime</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>
-                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
-                    20.000/jam
-                  </li>
+                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>
-                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
-                    20.000/jam
-                  </li>
+                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>
-                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
-                    20.000/jam
-                  </li>
+                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
               </Card>
@@ -96,25 +83,34 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold mt-4">{car.name}</h6>
                 <p className="p_jumlah_orang mt-2">
                   <img src={User} alt="user" />
-                  <span class="px-1"></span>{" "}
-                  {car.category === "small" && "2 - 4 orang"}
+                  <span class="px-1"></span> {car.category === "small" && "2 - 4 orang"}
                   {car.category === "medium" && "4 - 6 orang"}
                   {car.category === "Medium" && "4 - 6 orang"}
                   {car.category === "large" && "6 - 8 orang"}
                 </p>
-                <DatePicker
-                  selectsRange={true}
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={new Date()}
-                  onChange={(update) => {
-                    setDateRange(update);
-                  }}
-                  dateFormat="dd MMMM yyyy"
-                  isClearable={true}
-                  placeholderText="Pilih tanggal mulai dan tanggal akhir sewa"
-                  showDisabledMonthNavigation
-                />
+                <div className="cardetail-right-desc-date-bg">
+                  <p className="cardetail-right-desc-date-title-p">
+                    Tentukan lama sewa mobil (max. 7 hari)
+                  </p>
+                  <div className="cardetail-right-desc-date-input-bg">
+                    <DatePicker
+                      selectsRange={true}
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={new Date()}
+                      onChange={(update) => {
+                        setDateRange(update);
+                      }}
+                      dateFormat="dd MMMM yyyy"
+                      isClearable={true}
+                      placeholderText="Pilih tanggal mulai dan tanggal akhir sewa"
+                      showDisabledMonthNavigation
+                    />
+                    <div>
+                      <FiCalendar size={18} />
+                    </div>
+                  </div>
+                </div>
                 <Row>
                   <Col>
                     <p>Total</p>
