@@ -5,18 +5,30 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import User from "../assets/img/fi_users.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import APICar from "../apis/customer/APICar";
 import "../assets/css/deskripsiMobil.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiCalendar } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCarID,
+  setStartDate,
+  setEndDate,
+  setTotalDays,
+  setTotalPrice,
+  setOrderID,
+} from "../store/features/rentSlice";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.rent);
+  const total = state.totalPrice;
+  const navigate = useNavigate();
   const params = useParams();
   // const [carCategory, setCarCategory] = useState();
   // console.log(`deskripsi ${params.carId}`);
@@ -31,8 +43,38 @@ const DeskripsiMobil = () => {
     fetchData()
       // make sure to catch any error
       .catch(console.error);
-    console.log(dateRange);
+    const handleDatePicker = () => {
+      dispatch(setCarID(params.carId));
+      let date2 = new Date();
+      let dateFormat2 = "";
+      let Difference_In_Time = 0;
+      let Difference_In_Days = 0;
+      let totalPrice = 0;
+      const date1 = new Date(dateRange[0]);
+      const dateFormat1 =
+        date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+      dispatch(setStartDate(dateFormat1));
+      if (dateRange[1]) {
+        date2 = new Date(dateRange[1]);
+        dateFormat2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+        dispatch(setEndDate(dateFormat2));
+        Difference_In_Time = date2.getTime() - date1.getTime();
+        Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        dispatch(setTotalDays(Difference_In_Days + 1));
+        totalPrice = car.price * (Difference_In_Days + 1);
+        dispatch(setTotalPrice(totalPrice));
+      }
+      console.log(Difference_In_Days);
+      console.log(dateFormat1, dateFormat2);
+      console.log(date2);
+      console.log(dateRange);
+    };
+    handleDatePicker();
   }, [params.carId, dateRange]);
+
+  const handleButton = () => {
+    navigate("/payment");
+  };
 
   return (
     <>
@@ -97,8 +139,8 @@ const DeskripsiMobil = () => {
                       startDate={startDate}
                       endDate={endDate}
                       minDate={new Date()}
-                      onChange={(update) => {
-                        setDateRange(update);
+                      onChange={(e) => {
+                        setDateRange(e);
                       }}
                       dateFormat="dd MMMM yyyy"
                       isClearable={true}
@@ -116,12 +158,14 @@ const DeskripsiMobil = () => {
                     <p>Total</p>
                   </Col>
                   <Col className="text-end">
-                    <p>Rp {car.price}</p>
+                    <p>Rp {total}</p>
                   </Col>
                 </Row>
                 <br />
                 <div>
-                  <button className="cardetail-button">Lanjutkan Pembayaran</button>
+                  <button onClick={handleButton} className="cardetail-button">
+                    Lanjutkan Pembayaran
+                  </button>
                 </div>
               </Card>
             </Col>
