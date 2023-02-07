@@ -2,11 +2,13 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-
-import { Container, Accordion, ListGroupItem, Row, Col } from "react-bootstrap";
+import { STEPS, setStep } from "../store/features/rentSlice";
+import { useDispatch } from "react-redux";
+import { Accordion, ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 
 const RincianBiaya = () => {
+  const dispatch = useDispatch();
   return (
     <div className="m-5">
       <Card className="total">
@@ -55,7 +57,9 @@ const RincianBiaya = () => {
                 </Row>
               </div>
               <div className="d-grid">
-                <Button variant="success">Bayar</Button>{" "}
+                <Button variant="success" onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
+                  Bayar
+                </Button>{" "}
               </div>
             </ListGroupItem>
           </ListGroup>
