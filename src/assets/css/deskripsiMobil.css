@@ -44,7 +44,7 @@ body {
 .cardetail-date-title {
   font-family: "Rubik", sans-serif;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 18px;
 }
 
@@ -63,4 +63,17 @@ body {
 .react-datepicker__input-container input {
   border: none;
   width: 100%;
+}
+
+.cardetail-button {
+  border: none;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #5cb85f;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 2px;
 }
