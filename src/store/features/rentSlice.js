@@ -9,6 +9,12 @@ export const STEPS = {
 
 const initialState = {
   step: STEPS.SELECT_DATE,
+  startDate: "",
+  endDate: "",
+  carID: null,
+  totalDays: 0,
+  totalPrice: 0,
+  orderID: null,
   payload: {
     method: "",
     invoice: null,
@@ -36,10 +42,40 @@ const paymentSlice = createSlice({
     setInvoice: (state, action) => {
       state.payload.invoice = action.payload;
     },
+    setStartDate: (state, action) => {
+      state.startDate = action.payload;
+    },
+    setEndDate: (state, action) => {
+      state.endDate = action.payload;
+    },
+    setCarID: (state, action) => {
+      state.carID = action.payload;
+    },
+    setTotalDays: (state, action) => {
+      state.totalDays = action.payload;
+    },
+    setTotalPrice: (state, action) => {
+      state.totalPrice = action.payload;
+    },
+    setOrderID: (state, action) => {
+      state.orderID = action.payload;
+    },
   },
 });
 
-export const { setCarData, setDateRange, setStep, setMethod, setInvoice } = paymentSlice.actions;
+export const {
+  setCarData,
+  setDateRange,
+  setStep,
+  setMethod,
+  setInvoice,
+  setStartDate,
+  setEndDate,
+  setCarID,
+  setTotalDays,
+  setTotalPrice,
+  setOrderID,
+} = paymentSlice.actions;
 export default paymentSlice.reducer;
 
 export const selectStepPayment = (state) => state.rent.step;
