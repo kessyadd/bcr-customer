@@ -41,7 +41,18 @@ body {
   }
 }
 
-.cardetail-right-desc-date-input-bg {
+.cardetail-date-title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.cardetail-date-bg {
+  margin-top: 16px;
+}
+
+.cardetail-date-input {
   display: flex;
   border: 1px solid #009c96;
   border-radius: 2px;
@@ -49,13 +60,7 @@ body {
   margin-top: 8px;
 }
 
-.cardetail-right-desc-date-bg {
-  margin-top: 16px;
-}
-
-.cardetail-right-desc-date-title-p {
-  font-family: "Rubik", sans-serif;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 18px;
+.react-datepicker__input-container input {
+  border: none;
+  width: 100%;
 }

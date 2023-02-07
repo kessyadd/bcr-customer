@@ -88,11 +88,9 @@ const DeskripsiMobil = () => {
                   {car.category === "Medium" && "4 - 6 orang"}
                   {car.category === "large" && "6 - 8 orang"}
                 </p>
-                <div className="cardetail-right-desc-date-bg">
-                  <p className="cardetail-right-desc-date-title-p">
-                    Tentukan lama sewa mobil (max. 7 hari)
-                  </p>
-                  <div className="cardetail-right-desc-date-input-bg">
+                <div className="cardetail-date-bg">
+                  <p className="cardetail-date-title">Tentukan lama sewa mobil (max. 7 hari)</p>
+                  <div className="cardetail-date-input">
                     <DatePicker
                       selectsRange={true}
                       startDate={startDate}
@@ -111,6 +109,7 @@ const DeskripsiMobil = () => {
                     </div>
                   </div>
                 </div>
+                <br />
                 <Row>
                   <Col>
                     <p>Total</p>
