@@ -31,7 +31,8 @@ const DeskripsiMobil = () => {
     fetchData()
       // make sure to catch any error
       .catch(console.error);
-  }, [params.carId]);
+    console.log(dateRange);
+  }, [params.carId, dateRange]);
 
   return (
     <>
