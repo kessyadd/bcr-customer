@@ -118,6 +118,10 @@ const DeskripsiMobil = () => {
                     <p>Rp {car.price}</p>
                   </Col>
                 </Row>
+                <br />
+                <div>
+                  <button className="cardetail-button">Lanjutkan Pembayaran</button>
+                </div>
               </Card>
             </Col>
           </Row>
