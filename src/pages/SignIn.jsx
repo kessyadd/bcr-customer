@@ -10,10 +10,11 @@ import GrayButton from "../assets/img/rectangle.png";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const onFinish = (values) => {
+  const onFinish = (e) => {
+    e.preventDefault();
     const handleSubmit = async () => {
       try {
-        await APIAuth.login(values);
+        await APIAuth.login(e);
         let returnTo = "/";
         setTimeout(() => {
           navigate(returnTo);
@@ -21,7 +22,7 @@ const SignIn = () => {
       } catch (error) {}
     };
     handleSubmit();
-    console.log("Success:", values);
+    // console.log(e);
   };
 
   return (
@@ -40,11 +41,11 @@ const SignIn = () => {
                 <Form onSubmit={onFinish}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Contoh: johndoe@gmail.com" />
+                    <Form.Control type="email" name="email" placeholder="Contoh: johndoe@gmail.com" />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="6+ karakter" />
+                    <Form.Control type="password" name="password" placeholder="6+ karakter" />
                   </Form.Group>
                   <div className="d-grid">
                     <Button className="button-register" variant="primary" type="submit" size="lg">
