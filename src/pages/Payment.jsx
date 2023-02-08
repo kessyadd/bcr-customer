@@ -12,6 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { STEPS, selectStepPayment, setStep, setMethod, setInvoice } from "../store/features/rentSlice";
 import ChoosePayment from "../components/ChoosePayment";
 import TotalCost from "../components/TotalCost";
+import PaymentCountdown from "../components/PaymentCountdown";
+import Rekening from "../components/Rekening";
+import Instruction from "../components/Instruction";
+import Button from "react-bootstrap/Button";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -90,33 +94,27 @@ const Payment = () => {
         </Form>
       )}
       {step === STEPS.CONFIRM_PAYMENT && (
-        <div>
-          <h1>Confirm Payment</h1>
-          <h2>Upload bukti pembayaran</h2>
-          <input
-            type="file"
-            onChange={(e) => {
-              console.log(e.target.files);
-              dispatch(setInvoice(e.target.files[0]));
-            }}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(setStep(STEPS.PAYMENT_SUCCESS));
-              setIsPaymentSuccess(true);
-            }}
-          >
-            Confirm Payment
-          </button>
-        </div>
+        <Container>
+          <Row>
+            <Col>
+              <PaymentCountdown />
+              <Rekening />
+              <Instruction />
+            </Col>
+            <Col>
+              <Card>
+                <Card.Body>
+                  <h6>Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
+                  <div className="d-grid">
+                    <Button variant="success">Konfirmasi Pembayaran</Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       )}
-      {step === STEPS.PAYMENT_SUCCESS && (
-        <div>
-          <h1>Payment Success</h1>
-          <Link to="/">Back to Home</Link>
-        </div>
-      )}
+      {step === STEPS.PAYMENT_SUCCESS && <div></div>}
     </>
   );
 };
