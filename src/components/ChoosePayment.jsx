@@ -5,7 +5,7 @@ import "../assets/css/payment.css";
 
 const ChoosePayment = () => {
   return (
-    <div className="m-5 pilih-transfer">
+    <div className="pilih-transfer">
       <ListGroup className="choose-payment">
         <ListGroup.Item disabled variant="light">
           <h5 className="fs-5 fw-bold">Pilih Bank Transfer</h5>
