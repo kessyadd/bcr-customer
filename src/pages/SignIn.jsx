@@ -13,11 +13,11 @@ const SignIn = () => {
   const onFinish = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const name = formData.get("name");
+    const email = formData.get("email");
     const password = formData.get("password");
 
     const payload = {
-      name,
+      email,
       password,
     };
     const handleSubmit = async () => {
