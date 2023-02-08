@@ -12,9 +12,17 @@ const SignIn = () => {
   const navigate = useNavigate();
   const onFinish = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const password = formData.get("password");
+
+    const payload = {
+      name,
+      password,
+    };
     const handleSubmit = async () => {
       try {
-        await APIAuth.login(e);
+        await APIAuth.login(payload);
         let returnTo = "/";
         setTimeout(() => {
           navigate(returnTo);
@@ -22,7 +30,7 @@ const SignIn = () => {
       } catch (error) {}
     };
     handleSubmit();
-    // console.log(e);
+    console.log(e);
   };
 
   return (
