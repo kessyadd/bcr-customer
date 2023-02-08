@@ -9,7 +9,7 @@ import GrayButton from "../assets/img/rectangle.png";
 const SignUp = () => {
   return (
     <>
-      <Container className="cotainer-fluid">
+      <Container className="container-fluid">
         <Row>
           <Col lg={6} className="sign-in">
             <div className="d-inline-block">
