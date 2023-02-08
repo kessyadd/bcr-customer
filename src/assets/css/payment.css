@@ -4,7 +4,7 @@
 }
 
 .choose-payment {
-  position: absolute;
+  margin: 2rem;
   width: 605px;
   height: 320px;
   left: 441px;
@@ -12,10 +12,11 @@
 }
 
 .total {
+  margin: 2rem;
   width: 405px;
   height: 546px;
-  right: 278px;
-  bottom: 124px;
+  right: 200px;
+  bottom: 15px;
 }
 
 .accordion {

@@ -31,36 +31,37 @@ const Payment = () => {
     <>
       {step === STEPS.SELECT_DATE && (
         <Container>
-          <Card>
-            <Row className="m-5">
-              <h6>Detail Pesananmu</h6>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6>Nama/Tipe Mobil</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6>Kategori</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6>Tanggal Mulai Sewa</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6>Tanggal Akhir Sewa</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6 className="text-black-50">Innova</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6 className="text-black-50">6 - 8 orang</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6 className="text-black-50">2 Jun 2022</h6>
-              </Col>
-              <Col lg={3} sm={12} className="pt-3">
-                <h6 className="text-black-50">8 Jun 2022</h6>
-              </Col>
-            </Row>
-          </Card>
-
+          <Container>
+            <Card>
+              <Row className="m-5">
+                <h6>Detail Pesananmu</h6>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6>Nama/Tipe Mobil</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6>Kategori</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6>Tanggal Mulai Sewa</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6>Tanggal Akhir Sewa</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6 className="text-black-50">Innova</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6 className="text-black-50">6 - 8 orang</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6 className="text-black-50">2 Jun 2022</h6>
+                </Col>
+                <Col lg={3} sm={12} className="pt-3">
+                  <h6 className="text-black-50">8 Jun 2022</h6>
+                </Col>
+              </Row>
+            </Card>
+          </Container>
           <Row>
             <Col xs={12} md={8}>
               <ChoosePayment />

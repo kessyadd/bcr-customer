@@ -1,13 +1,29 @@
-import React, { useEffect } from "react";
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../assets/css/signIn.css";
-import Desktop from "../assets/img/Group83.png";
+import APIAuth from "../apis/customer/APIAuth";
+
 import GrayButton from "../assets/img/rectangle.png";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const onFinish = (values) => {
+    const handleSubmit = async () => {
+      try {
+        await APIAuth.login(values);
+        let returnTo = "/";
+        setTimeout(() => {
+          navigate(returnTo);
+        }, 2000);
+      } catch (error) {}
+    };
+    handleSubmit();
+    console.log("Success:", values);
+  };
+
   return (
     <>
       <Container className="container-fluid">
@@ -21,10 +37,10 @@ const SignIn = () => {
                 <h1 className="fw-bold fs-2 mt-4 mb-4">Welcome Back!</h1>
               </Col>
               <Col lg={12}>
-                <Form>
+                <Form onSubmit={onFinish}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control o type="email" placeholder="Contoh: johndoe@gmail.com" />
+                    <Form.Control type="email" placeholder="Contoh: johndoe@gmail.com" />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
@@ -36,7 +52,7 @@ const SignIn = () => {
                     </Button>
                   </div>
                   <h6 className="mt-4 fw-bolder">
-                    Don’t have an account? <a href="#">Sign Up for free</a>
+                    Don't have an account? <a href="/sign-up">Sign Up for free</a>
                   </h6>
                 </Form>
               </Col>
