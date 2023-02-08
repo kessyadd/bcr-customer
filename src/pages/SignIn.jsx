@@ -37,7 +37,7 @@ const SignIn = () => {
                 <h1 className="fw-bold fs-2 mt-4 mb-4">Welcome Back!</h1>
               </Col>
               <Col lg={12}>
-                <Form>
+                <Form onSubmit={onFinish}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Contoh: johndoe@gmail.com" />
@@ -47,7 +47,7 @@ const SignIn = () => {
                     <Form.Control type="password" placeholder="6+ karakter" />
                   </Form.Group>
                   <div className="d-grid">
-                    <Button className="button-register" variant="primary" type="submit" size="lg" onFinish={onFinish}>
+                    <Button className="button-register" variant="primary" type="submit" size="lg">
                       Sign In
                     </Button>
                   </div>
