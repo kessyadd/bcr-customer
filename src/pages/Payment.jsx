@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import dayjs from "dayjs";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import "../assets/css/payment.css";
-import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
-import { STEPS, selectStepPayment, setStep, setMethod, setInvoice } from "../store/features/rentSlice";
+import { STEPS, selectStepPayment, setStep, setMethod } from "../store/features/rentSlice";
 import ChoosePayment from "../components/ChoosePayment";
 import TotalCost from "../components/TotalCost";
 import PaymentCountdown from "../components/PaymentCountdown";
 import Rekening from "../components/Rekening";
 import Instruction from "../components/Instruction";
 import Button from "react-bootstrap/Button";
+import ButtonUpload from "../components/ButtonUpload";
+import Figure from "react-bootstrap/Figure";
+import UploadPayment from "../assets/img/frame39.png";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -34,7 +35,7 @@ const Payment = () => {
   return (
     <>
       {step === STEPS.SELECT_DATE && (
-        <Container>
+        <Container className="mt-3">
           <Container>
             <Card>
               <Row className="m-5">
@@ -76,25 +77,9 @@ const Payment = () => {
           </Row>
         </Container>
       )}
-      {step === STEPS.SELECT_METHOD && (
-        <Form>
-          {["radio"].map((type) => (
-            <div key={`default-${type}`} onChange={(value) => dispatch(setMethod(value.target.value))} className="mb-3 choose">
-              <ListGroup.Item variant="light">
-                <Form.Check label="BCA Transfer" value="BCA" name="group1" type={type} id={`BCA Transfer`} />
-              </ListGroup.Item>
-              <ListGroup.Item variant="light">
-                <Form.Check label="BNI Transfer" value="BNI" name="group1" type={type} id={`BNI Transfer`} />
-              </ListGroup.Item>
-              <ListGroup.Item variant="light">
-                <Form.Check label="Mandiri Transfer" value="Mandiri" name="group1" type={type} id={`inline-${type}-2`} />
-              </ListGroup.Item>
-            </div>
-          ))}
-        </Form>
-      )}
+
       {step === STEPS.CONFIRM_PAYMENT && (
-        <Container>
+        <Container className="mt-3">
           <Row>
             <Col>
               <PaymentCountdown />
@@ -102,11 +87,13 @@ const Payment = () => {
               <Instruction />
             </Col>
             <Col>
-              <Card>
-                <Card.Body>
-                  <h6>Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
+              <Card style={{ width: 405, height: 148 }}>
+                <Card.Body className="p-3">
+                  <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
                   <div className="d-grid">
-                    <Button variant="success">Konfirmasi Pembayaran</Button>
+                    <Button variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
+                      Konfirmasi Pembayaran
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
@@ -114,7 +101,43 @@ const Payment = () => {
           </Row>
         </Container>
       )}
-      {step === STEPS.PAYMENT_SUCCESS && <div></div>}
+      {step === STEPS.PAYMENT_SUCCESS && (
+        <Container className="mt-3">
+          <Row>
+            <Col>
+              <PaymentCountdown />
+              <Rekening />
+              <Instruction />
+            </Col>
+            <Col>
+              <Card style={{ width: 405, height: 474 }}>
+                <Card.Body className="p-3">
+                  <Row>
+                    <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
+                  </Row>
+                  <Row>
+                    <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>
+                  </Row>
+                  <Row>
+                    <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
+                  </Row>
+                  <Row>
+                    <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
+                  </Row>
+                  <Row>
+                    <Figure className="align-item-center">
+                      <Figure.Image width={296} height={162} alt="171x180" src={UploadPayment} />
+                    </Figure>
+                  </Row>
+                  <div className="d-grid">
+                    <ButtonUpload />
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      )}
     </>
   );
 };
