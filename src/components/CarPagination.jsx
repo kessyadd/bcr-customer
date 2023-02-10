@@ -3,12 +3,7 @@ import { Container } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import {
-  setPage,
-  filters,
-  fetchStatus,
-  resetCar,
-} from "../store/features/searchCarSlice";
+import { setPage, filters } from "../store/features/searchCarSlice";
 
 const CarPagination = () => {
   const dispatch = useDispatch();
@@ -20,7 +15,7 @@ const CarPagination = () => {
   const minPrice = car.filterData[0].minPrice;
   const maxPrice = car.filterData[0].maxPrice;
   const pageSize = 9;
-  const pageCount = car.pageCount;
+  const pageCount = car.data.pageCount;
   const activePage = car.page;
 
   const handleOnClick = (number) => {
@@ -35,9 +30,6 @@ const CarPagination = () => {
       pageSize,
     };
     dispatch(filters(payload)); //set payload
-    dispatch(fetchStatus("loading")); //set fetch status
-    dispatch(resetCar([])); //reset car data
-
     dispatch(setPage(number));
     navigate("/hasil-pencarian");
   };

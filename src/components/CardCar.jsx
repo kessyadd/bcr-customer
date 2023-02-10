@@ -10,9 +10,12 @@ import { useSelector } from "react-redux";
 
 const CardCar = () => {
   const car = useSelector((state) => state.searchCar);
-  console.log(car.carData);
-
+  const data = car.data;
   const navigate = useNavigate();
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
 
   const toDetilMobil = (id) => (e) => {
     e.preventDefault();
@@ -22,7 +25,7 @@ const CardCar = () => {
   return (
     <Container className="card-list">
       <Row id="card-car">
-        {car.carData[0].map((car) => (
+        {data.cars.map((car) => (
           <Col lg={4} md={6} sm={12} className="mb-4">
             <Card className="shadow-sm">
               <Card.Img
@@ -35,7 +38,7 @@ const CardCar = () => {
               <Card.Body>
                 <h6>{car.name}</h6>
                 <Card.Title className="fw-bold my-3">
-                  Rp. {car.price} / hari
+                  {formatter.format(car.price)}/hari
                 </Card.Title>
                 <Card.Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
