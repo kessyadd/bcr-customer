@@ -8,7 +8,7 @@ import "../assets/css/ctaSewaMobil.css";
 
 const CtaSewaMobil = () => {
   return (
-    <Container fluid class="pt-5">
+    <Container fluid className="pt-5">
       <Row className="cta m-5 rounded-3 text-center">
         <Col lg={12} className="p-5">
           <h1 className="fw-bold">Sewa Mobil di Jakarta Sekarang</h1>
