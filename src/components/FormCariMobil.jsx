@@ -3,12 +3,7 @@ import { Form, Button, Col, Row, Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/formCariMobil.css";
 import { useDispatch } from "react-redux";
-import {
-  resetCar,
-  filters,
-  setPage,
-  fetchStatus,
-} from "../store/features/searchCarSlice";
+import { filters, setPage } from "../store/features/searchCarSlice";
 
 const FormCariMobil = () => {
   const navigate = useNavigate();
@@ -60,8 +55,6 @@ const FormCariMobil = () => {
     };
     dispatch(setPage(page));
     dispatch(filters(payload)); //set payload
-    dispatch(fetchStatus("loading")); //set fetch status
-    dispatch(resetCar([])); //reset car data
     navigate("/hasil-pencarian");
   };
 
