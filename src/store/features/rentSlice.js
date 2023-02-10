@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const STEPS = {
   SELECT_DATE: "SELECT_DATE",
-  SELECT_METHOD: "SELECT_METHOD",
   CONFIRM_PAYMENT: "CONFIRM_PAYMENT",
   PAYMENT_SUCCESS: "PAYMENT_SUCCESS",
 };
@@ -63,19 +62,7 @@ const paymentSlice = createSlice({
   },
 });
 
-export const {
-  setCarData,
-  setDateRange,
-  setStep,
-  setMethod,
-  setInvoice,
-  setStartDate,
-  setEndDate,
-  setCarID,
-  setTotalDays,
-  setTotalPrice,
-  setOrderID,
-} = paymentSlice.actions;
+export const { setCarData, setDateRange, setStep, setMethod, setInvoice, setStartDate, setEndDate, setCarID, setTotalDays, setTotalPrice, setOrderID } = paymentSlice.actions;
 export default paymentSlice.reducer;
 
 export const selectStepPayment = (state) => state.rent.step;

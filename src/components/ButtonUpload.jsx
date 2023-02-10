@@ -5,9 +5,9 @@ const ButtonUpload = (props) => {
   const handleClick = () => {
     hiddenFileInput.current.click();
   };
-  const handleChange = (event) => {
-    const fileUploaded = event.target.files[0];
-    props.handleFile(fileUploaded);
+  const handleChange = (e) => {
+    const fileUploaded = e.target.files[0];
+    props.handleFile(URL.createObjectURL(fileUploaded));
   };
   return (
     <>

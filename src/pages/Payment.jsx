@@ -22,7 +22,12 @@ const Payment = () => {
   const step = useSelector(selectStepPayment);
   const dispatch = useDispatch();
 
+  const [invoiceImage, setInvoiceImage] = useState();
+
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  const handleFile = (file) => {
+    setInvoiceImage(file);
+  };
 
   React.useEffect(() => {
     return () => {
@@ -125,12 +130,10 @@ const Payment = () => {
                     <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
                   </Row>
                   <Row>
-                    <Figure className="align-item-center">
-                      <Figure.Image width={296} height={162} alt="171x180" src={UploadPayment} />
-                    </Figure>
+                    <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="171x180" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="171x180" src={UploadPayment} />}</Figure>
                   </Row>
                   <div className="d-grid">
-                    <ButtonUpload />
+                    <ButtonUpload handleFile={handleFile} />
                   </div>
                 </Card.Body>
               </Card>
