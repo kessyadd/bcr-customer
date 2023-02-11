@@ -12,14 +12,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiCalendar } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setCarID,
-  setStartDate,
-  setEndDate,
-  setTotalDays,
-  setTotalPrice,
-  setOrderID,
-} from "../store/features/rentSlice";
+import { setCarID, setStartDate, setEndDate, setTotalDays, setTotalPrice, setOrderID } from "../store/features/rentSlice";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
@@ -51,8 +44,7 @@ const DeskripsiMobil = () => {
       let Difference_In_Days = 0;
       let totalPrice = 0;
       const date1 = new Date(dateRange[0]);
-      const dateFormat1 =
-        date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+      const dateFormat1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
       dispatch(setStartDate(dateFormat1));
       if (dateRange[1]) {
         date2 = new Date(dateRange[1]);

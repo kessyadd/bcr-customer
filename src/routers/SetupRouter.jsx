@@ -10,6 +10,7 @@ import SignIn from "../pages/SignIn";
 import Payment from "../pages/Payment";
 import SignUp from "../pages/SignUp";
 import PublicRoute from "./PublicRoute";
+import Tiket from "../pages/Tiket";
 
 const SetupRouter = () => {
   return (
@@ -18,6 +19,7 @@ const SetupRouter = () => {
         <Routes>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/payment" element={<Payment />} />
+            <Route path="/e-tiket" element={<Tiket />} />
           </Route>
           <Route path="/" element={<ProtectedRoute />}>
             <Route path="/sign-in" element={<SignIn />} />
