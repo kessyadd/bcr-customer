@@ -4,8 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import "../assets/css/payment.css";
-import ListGroup from "react-bootstrap/ListGroup";
-import Form from "react-bootstrap/Form";
+import APICar from "../apis/customer/APICar";
 import { useDispatch, useSelector } from "react-redux";
 import { STEPS, selectStepPayment, setStep, setMethod } from "../store/features/rentSlice";
 import ChoosePayment from "../components/ChoosePayment";
@@ -130,7 +129,7 @@ const Payment = () => {
                     <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
                   </Row>
                   <Row>
-                    <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="171x180" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="171x180" src={UploadPayment} />}</Figure>
+                    <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
                   </Row>
                   <div className="d-grid">
                     <ButtonUpload handleFile={handleFile} />
