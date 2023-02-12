@@ -18,31 +18,24 @@ const RincianBiaya = () => {
               <h6 className="fw-bold ms-1">Innova</h6>
               <h6 className="text-black-50 ms-1">6 - 8 orang</h6>
               <div>
-                <Accordion className="accordion p-1" defaultActiveKey={["0"]} alwaysOpen style={{ border: 0 }}>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>Total</Accordion.Header>
-                    <Accordion.Body>
-                      <div>
-                        <h6 className="fw-bold">Harga</h6>
-                        <ul>
-                          <li className="fs-6 fw-normal text-dark">Sewa Mobil Rp.500.000 x 7 Hari</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="fw-bold">Biaya Lainnya</h6>
-                        <ul>
-                          <li className="fs-6 fw-normal text-dark">Pajak</li>
-                          <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
-                        </ul>
-                      </div>
-                      <h6 className="fw-bold">Belum Termasuk</h6>
-                      <ul>
-                        <li className="fs-6 fw-normal text-dark">Bensin</li>
-                        <li className="fs-6 fw-normal text-dark">Tol parkir</li>
-                      </ul>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+                <div>
+                  <h6 className="fw-bold">Harga</h6>
+                  <ul>
+                    <li className="fs-6 fw-normal text-dark">Sewa Mobil Rp.500.000 x 7 Hari</li>
+                  </ul>
+                </div>
+                <div>
+                  <h6 className="fw-bold">Biaya Lainnya</h6>
+                  <ul>
+                    <li className="fs-6 fw-normal text-dark">Pajak</li>
+                    <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
+                  </ul>
+                </div>
+                <h6 className="fw-bold">Belum Termasuk</h6>
+                <ul>
+                  <li className="fs-6 fw-normal text-dark">Bensin</li>
+                  <li className="fs-6 fw-normal text-dark">Tol parkir</li>
+                </ul>
               </div>
             </ListGroup.Item>
             <ListGroupItem>
