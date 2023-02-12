@@ -6,7 +6,12 @@ import Card from "react-bootstrap/Card";
 import "../assets/css/payment.css";
 import APIOrder from "../apis/customer/APIOrder";
 import { useDispatch, useSelector } from "react-redux";
-import { STEPS, selectStepPayment, setStep, setMethod } from "../store/features/rentSlice";
+import {
+  STEPS,
+  selectStepPayment,
+  setStep,
+  setMethod,
+} from "../store/features/rentSlice";
 import ChoosePayment from "../components/ChoosePayment";
 import TotalCost from "../components/TotalCost";
 import PaymentCountdown from "../components/PaymentCountdown";
@@ -45,7 +50,7 @@ const Payment = () => {
         const result = await APIOrder.getOrderDetails(orderId);
         console.log(result);
         if (result.data) {
-          setOrderData(result.data.data);
+          setOrderData(result.data);
           console.log(orderData);
         }
       } catch (error) {}
@@ -55,6 +60,7 @@ const Payment = () => {
 
   const RenderPayment = () => {
     if (orderData) {
+      console.log(orderData.Car.name);
       return (
         <>
           {step === STEPS.SELECT_DATE && (
@@ -81,7 +87,9 @@ const Payment = () => {
                     </Row>
                     <Row>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">{orderData.car.name}</h6>
+                        <h6 className="text-black-50 ps-3">
+                          {orderData.Car.name}
+                        </h6>
                       </Col>
                       <Col lg={3} sm={12}>
                         <h6 className="text-black-50 ps-3">6 - 8 orang</h6>
@@ -118,9 +126,17 @@ const Payment = () => {
                 <Col>
                   <Card style={{ width: 405, height: 148 }}>
                     <Card.Body className="p-3">
-                      <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
+                      <h6 className="fs-6 mb-4">
+                        Klik konfirmasi pembayaran untuk mempercepat proses
+                        pengecekan
+                      </h6>
                       <div className="d-grid">
-                        <Button variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
+                        <Button
+                          variant="success"
+                          onClick={() =>
+                            dispatch(setStep(STEPS.PAYMENT_SUCCESS))
+                          }
+                        >
                           Konfirmasi Pembayaran
                         </Button>
                       </div>
@@ -145,16 +161,39 @@ const Payment = () => {
                         <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>
+                        <h6 className="fw-normal ">
+                          Terima kasih telah melakukan konfirmasi pembayaran.
+                          Pembayaranmu akan segera kami cek tunggu kurang lebih
+                          10 menit untuk mendapatkan konfirmasi.
+                        </h6>
                       </Row>
                       <Row>
                         <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
+                        <h6 className="fw-normal ">
+                          Untuk membantu kami lebih cepat melakukan pengecekan.
+                          Kamu bisa upload bukti bayarmu
+                        </h6>
                       </Row>
                       <Row>
-                        <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
+                        <Figure className="align-item-center">
+                          {invoiceImage ? (
+                            <Figure.Image
+                              width={296}
+                              height={162}
+                              alt="Invoice"
+                              src={invoiceImage}
+                            />
+                          ) : (
+                            <Figure.Image
+                              width={296}
+                              height={162}
+                              alt="Invoice"
+                              src={UploadPayment}
+                            />
+                          )}
+                        </Figure>
                       </Row>
                       <div className="d-grid">
                         <ButtonUpload handleFile={handleFile} />
@@ -169,7 +208,7 @@ const Payment = () => {
       );
     }
   };
-  return {orderData  && <RenderPayment />   };
+  return <RenderPayment />;
 };
 
 export default Payment;
