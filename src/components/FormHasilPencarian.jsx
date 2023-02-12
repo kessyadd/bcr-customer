@@ -3,12 +3,7 @@ import { Form, Button, Col, Row, Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/formHasilPencarian.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  filters,
-  fetchStatus,
-  resetCar,
-  setPage,
-} from "../store/features/searchCarSlice";
+import { filters, setPage } from "../store/features/searchCarSlice";
 
 const FormHasilPencarian = (props) => {
   const navigate = useNavigate();
@@ -69,11 +64,8 @@ const FormHasilPencarian = (props) => {
       page,
       pageSize,
     };
-    console.log(payload);
     dispatch(setPage(page));
     dispatch(filters(payload)); //set payload
-    dispatch(fetchStatus("loading")); //set fetch status
-    dispatch(resetCar([])); //reset car data
     navigate("/hasil-pencarian");
   };
 
@@ -192,7 +184,7 @@ const FormHasilPencarian = (props) => {
               {props.isEdit === true && (
                 <Col className="py-1" lg="auto" sm={12}>
                   <Button type="submit" variant="outline-primary">
-                    Edit
+                    Cari
                   </Button>
                 </Col>
               )}
