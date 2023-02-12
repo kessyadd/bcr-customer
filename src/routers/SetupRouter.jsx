@@ -18,7 +18,7 @@ const SetupRouter = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment/:orderId" element={<Payment />} />
             <Route path="/e-tiket" element={<Tiket />} />
           </Route>
           <Route path="/" element={<ProtectedRoute />}>

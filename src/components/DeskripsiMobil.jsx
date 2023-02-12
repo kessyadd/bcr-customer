@@ -65,7 +65,7 @@ const DeskripsiMobil = () => {
   }, [params.carId, dateRange]);
 
   const handleButton = () => {
-    navigate("/payment");
+    navigate("/payment/1082");
   };
 
   return (
