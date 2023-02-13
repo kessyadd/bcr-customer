@@ -52,11 +52,20 @@ const DeskripsiMobil = () => {
       let totalPrice = 0;
       const date1 = new Date(dateRange[0]);
       const dateFormat1 =
-        date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+        date1.getFullYear() +
+        "-" +
+        (date1.getMonth() + 1) +
+        "-" +
+        date1.getDate();
       dispatch(setStartDate(dateFormat1));
       if (dateRange[1]) {
         date2 = new Date(dateRange[1]);
-        dateFormat2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+        dateFormat2 =
+          date2.getFullYear() +
+          "-" +
+          (date2.getMonth() + 1) +
+          "-" +
+          date2.getDate();
         dispatch(setEndDate(dateFormat2));
         Difference_In_Time = date2.getTime() - date1.getTime();
         Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
@@ -73,7 +82,7 @@ const DeskripsiMobil = () => {
   }, [params.carId, dateRange]);
 
   const handleButton = () => {
-    navigate("/payment");
+    navigate("/payment/1802");
   };
 
   return (
@@ -95,7 +104,9 @@ const DeskripsiMobil = () => {
                 <h6 className="mb-4 fw-bold">Tentang Paket</h6>
                 <h6 className="fw-bold">Include</h6>
                 <ul>
-                  <li>Apa saja yang termasuk dalam paket misal durasi max 12 jam</li>
+                  <li>
+                    Apa saja yang termasuk dalam paket misal durasi max 12 jam
+                  </li>
                   <li>Sudah termasuk bensin selama 12 jam</li>
                   <li>Sudah termasuk Tiket Wisata</li>
                   <li>Sudah termasuk pajak</li>
@@ -103,19 +114,31 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold">Exclude</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
                 <h6 className="fw-bold">Refund, Reschedule, Overtime</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
               </Card>
@@ -126,13 +149,16 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold mt-4">{car.name}</h6>
                 <p className="p_jumlah_orang mt-2">
                   <img src={User} alt="user" />
-                  <span class="px-1"></span> {car.category === "small" && "2 - 4 orang"}
+                  <span class="px-1"></span>{" "}
+                  {car.category === "small" && "2 - 4 orang"}
                   {car.category === "medium" && "4 - 6 orang"}
                   {car.category === "Medium" && "4 - 6 orang"}
                   {car.category === "large" && "6 - 8 orang"}
                 </p>
                 <div className="cardetail-date-bg">
-                  <p className="cardetail-date-title">Tentukan lama sewa mobil (max. 7 hari)</p>
+                  <p className="cardetail-date-title">
+                    Tentukan lama sewa mobil (max. 7 hari)
+                  </p>
                   <div className="cardetail-date-input">
                     <DatePicker
                       selectsRange={true}
