@@ -7,15 +7,16 @@ import { useDispatch } from "react-redux";
 import { Accordion, ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 
-const RincianBiaya = () => {
+const RincianBiaya = ({ carName, totalPrice }) => {
   const dispatch = useDispatch();
+
   return (
     <div className="m-5">
       <Card className="total">
         <Card.Body>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h6 className="fw-bold ms-1">Innova</h6>
+              <h6 className="fw-bold ms-1">{carName}</h6>
               <h6 className="text-black-50 ms-1">6 - 8 orang</h6>
               <div>
                 <div>
@@ -45,7 +46,7 @@ const RincianBiaya = () => {
                     <h6 className="text-start fw-bold">Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bold">Rp 3.500.000</h6>
+                    <h6 className="text-end fw-bold">{totalPrice}</h6>
                   </Col>
                 </Row>
               </div>
