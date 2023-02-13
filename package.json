@@ -49,7 +49,8 @@
     ]
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.2.1"
+    "@svgr/webpack": "^6.2.1",
+    "vercel": "^28.15.3"
   },
   "overrides": {
     "nth-check": "2.0.1",
