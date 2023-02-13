@@ -1,3 +1,17 @@
+.green-button {
+  background-color: #5cb85f;
+  border: none;
+  width: 358px;
+  height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+
+  border-radius: 3px;
+}
+
 .pemesanan {
   max-width: 1042px;
   height: 320px;

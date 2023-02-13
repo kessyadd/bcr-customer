@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { STEPS, setStep } from "../store/features/rentSlice";
 import { useDispatch } from "react-redux";
-import { Accordion, ListGroupItem, Row, Col } from "react-bootstrap";
+import { ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 
-const RincianBiaya = ({ carName, totalPrice }) => {
+const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory }) => {
   const dispatch = useDispatch();
+  const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <div className="m-5">
@@ -17,12 +17,17 @@ const RincianBiaya = ({ carName, totalPrice }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h6 className="fw-bold ms-1">{carName}</h6>
-              <h6 className="text-black-50 ms-1">6 - 8 orang</h6>
+              <h6 className="text-black-50 ms-1">
+                {carCategory === "small" && "2 - 4 orang"}
+                {carCategory === "medium" && "4 - 6 orang"}
+                {carCategory === "Medium" && "4 - 6 orang"}
+                {carCategory === "large" && "6 - 8 orang"}
+              </h6>
               <div>
                 <div>
                   <h6 className="fw-bold">Harga</h6>
                   <ul>
-                    <li className="fs-6 fw-normal text-dark">Sewa Mobil Rp.500.000 x 7 Hari</li>
+                    <li className="fs-6 fw-normal text-dark">Sewa Mobil {carPrice} x 7 Hari</li>
                   </ul>
                 </div>
                 <div>
@@ -40,7 +45,7 @@ const RincianBiaya = ({ carName, totalPrice }) => {
               </div>
             </ListGroup.Item>
             <ListGroupItem>
-              <div className="m-2">
+              <div>
                 <Row>
                   <Col>
                     <h6 className="text-start fw-bold">Total</h6>
@@ -50,11 +55,14 @@ const RincianBiaya = ({ carName, totalPrice }) => {
                   </Col>
                 </Row>
               </div>
-              <div className="d-grid">
-                <Button variant="success" onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
-                  Bayar
-                </Button>{" "}
-              </div>
+              <button
+                className="green-button justify-content-center mt-2"
+                variant="success"
+                // disabled={isDisabled}
+                onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
+              >
+                Bayar
+              </button>{" "}
             </ListGroupItem>
           </ListGroup>
         </Card.Body>

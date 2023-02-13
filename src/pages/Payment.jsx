@@ -85,13 +85,18 @@ const Payment = () => {
                         <h6 className="text-black-50 ps-3">{orderData.Car.name}</h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">6 - 8 orang</h6>
+                        <h6 className="text-black-50 ps-3">
+                          {orderData.Car.category === "small" && "2 - 4 orang"}
+                          {orderData.Car.category === "medium" && "4 - 6 orang"}
+                          {orderData.Car.category === "Medium" && "4 - 6 orang"}
+                          {orderData.Car.category === "large" && "6 - 8 orang"}
+                        </h6>
                       </Col>
                       <Col lg={3} sm={12}>
                         <h6 className="text-black-50 ps-3">{orderData.Car.start_rent_at}</h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">8 Jun 2022</h6>
+                        <h6 className="text-black-50 ps-3">{orderData.Car.finish_rent_at}</h6>
                       </Col>
                     </Row>
                   </Row>
@@ -102,7 +107,7 @@ const Payment = () => {
                   <ChoosePayment />
                 </Col>
                 <Col xs={6} md={4}>
-                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} />
+                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} />
                 </Col>
               </Row>
             </Container>
@@ -113,7 +118,7 @@ const Payment = () => {
               <Row>
                 <Col>
                   <PaymentCountdown />
-                  <Rekening />
+                  <Rekening amountTransfer={orderData.total_price} />
                   <Instruction />
                 </Col>
                 <Col>
@@ -121,9 +126,9 @@ const Payment = () => {
                     <Card.Body className="p-3">
                       <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
                       <div className="d-grid">
-                        <Button variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
+                        <button className="green-button" variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
                           Konfirmasi Pembayaran
-                        </Button>
+                        </button>
                       </div>
                     </Card.Body>
                   </Card>
@@ -136,7 +141,7 @@ const Payment = () => {
               <Row>
                 <Col>
                   <PaymentCountdown />
-                  <Rekening />
+                  <Rekening amountTransfer={orderData.total_price} />
                   <Instruction />
                 </Col>
                 <Col>
