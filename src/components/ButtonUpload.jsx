@@ -17,9 +17,9 @@ const ButtonUpload = (props) => {
 
   return (
     <>
-      <Button variant="success" onClick={handleClick}>
+      <button className="green-button" variant="success" onClick={handleClick}>
         {buttonText}
-      </Button>
+      </button>
       <input type="file" ref={hiddenFileInput} onChange={handleChange} style={{ display: "none" }} />
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Row, Col } from "react-bootstrap";
 
-const Rekening = () => {
+const Rekening = ({ amountTransfer }) => {
   return (
     <>
       <Card className="p-2 mt-3 justify-content-center" style={{ width: 605, height: 278 }}>
@@ -24,7 +24,7 @@ const Rekening = () => {
               <Row>
                 <h6 className="fw-light mt-4">Total Bayar</h6>
                 <Card className="p-0 justify-content-center" style={{ width: 557, height: 36 }}>
-                  <Card.Body>Rp 3.500.000</Card.Body>
+                  <Card.Body>Rp.{amountTransfer}</Card.Body>
                 </Card>
               </Row>
             </Col>

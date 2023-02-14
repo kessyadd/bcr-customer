@@ -6,12 +6,7 @@ import Card from "react-bootstrap/Card";
 import "../assets/css/payment.css";
 import APIOrder from "../apis/customer/APIOrder";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  STEPS,
-  selectStepPayment,
-  setStep,
-  setMethod,
-} from "../store/features/rentSlice";
+import { STEPS, selectStepPayment, setStep, setMethod } from "../store/features/rentSlice";
 import ChoosePayment from "../components/ChoosePayment";
 import TotalCost from "../components/TotalCost";
 import PaymentCountdown from "../components/PaymentCountdown";
@@ -30,6 +25,9 @@ const Payment = () => {
   const [invoiceImage, setInvoiceImage] = useState();
   console.log(orderId);
   const [orderData, setOrderData] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [totalDays, setTotalDays] = useState();
 
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   const handleFile = (file) => {
@@ -48,10 +46,22 @@ const Payment = () => {
     const fetchOrderData = async (orderId) => {
       try {
         const result = await APIOrder.getOrderDetails(orderId);
-        console.log(result);
+
         if (result.data) {
           setOrderData(result.data);
-          console.log(orderData);
+          console.log(result.data.start_rent_at);
+          const startDateTemp = new Date(result.data.start_rent_at);
+          const formatStartDate = startDateTemp.getDate() + "-" + (startDateTemp.getMonth() + 1) + "-" + startDateTemp.getFullYear();
+          setStartDate(formatStartDate);
+          const endDateTemp = new Date(result.data.finish_rent_at);
+          const formatEndDate = endDateTemp.getDate() + "-" + (endDateTemp.getMonth() + 1) + "-" + endDateTemp.getFullYear();
+          setEndDate(formatEndDate);
+
+          let Difference_In_Time = endDateTemp.getTime() - startDateTemp.getTime();
+          console.log(Difference_In_Time);
+          let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+          console.log(Difference_In_Days);
+          dispatch(setTotalDays(Difference_In_Days + 1));
         }
       } catch (error) {}
     };
@@ -87,18 +97,21 @@ const Payment = () => {
                     </Row>
                     <Row>
                       <Col lg={3} sm={12}>
+                        <h6 className="text-black-50 ps-3">{orderData.Car.name}</h6>
+                      </Col>
+                      <Col lg={3} sm={12}>
                         <h6 className="text-black-50 ps-3">
-                          {orderData.Car.name}
+                          {orderData.Car.category === "small" && "2 - 4 orang"}
+                          {orderData.Car.category === "medium" && "4 - 6 orang"}
+                          {orderData.Car.category === "Medium" && "4 - 6 orang"}
+                          {orderData.Car.category === "large" && "6 - 8 orang"}
                         </h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">6 - 8 orang</h6>
+                        <h6 className="text-black-50 ps-3">{startDate} </h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">2 Jun 2022</h6>
-                      </Col>
-                      <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">8 Jun 2022</h6>
+                        <h6 className="text-black-50 ps-3">{endDate}</h6>
                       </Col>
                     </Row>
                   </Row>
@@ -109,7 +122,7 @@ const Payment = () => {
                   <ChoosePayment />
                 </Col>
                 <Col xs={6} md={4}>
-                  <TotalCost />
+                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} totalDays={totalDays} />
                 </Col>
               </Row>
             </Container>
@@ -120,25 +133,17 @@ const Payment = () => {
               <Row>
                 <Col>
                   <PaymentCountdown />
-                  <Rekening />
+                  <Rekening amountTransfer={orderData.total_price} />
                   <Instruction />
                 </Col>
                 <Col>
                   <Card style={{ width: 405, height: 148 }}>
                     <Card.Body className="p-3">
-                      <h6 className="fs-6 mb-4">
-                        Klik konfirmasi pembayaran untuk mempercepat proses
-                        pengecekan
-                      </h6>
+                      <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
                       <div className="d-grid">
-                        <Button
-                          variant="success"
-                          onClick={() =>
-                            dispatch(setStep(STEPS.PAYMENT_SUCCESS))
-                          }
-                        >
+                        <button className="green-button" variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
                           Konfirmasi Pembayaran
-                        </Button>
+                        </button>
                       </div>
                     </Card.Body>
                   </Card>
@@ -151,7 +156,7 @@ const Payment = () => {
               <Row>
                 <Col>
                   <PaymentCountdown />
-                  <Rekening />
+                  <Rekening amountTransfer={orderData.total_price} />
                   <Instruction />
                 </Col>
                 <Col>
@@ -161,39 +166,16 @@ const Payment = () => {
                         <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">
-                          Terima kasih telah melakukan konfirmasi pembayaran.
-                          Pembayaranmu akan segera kami cek tunggu kurang lebih
-                          10 menit untuk mendapatkan konfirmasi.
-                        </h6>
+                        <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>
                       </Row>
                       <Row>
                         <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">
-                          Untuk membantu kami lebih cepat melakukan pengecekan.
-                          Kamu bisa upload bukti bayarmu
-                        </h6>
+                        <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
                       </Row>
                       <Row>
-                        <Figure className="align-item-center">
-                          {invoiceImage ? (
-                            <Figure.Image
-                              width={296}
-                              height={162}
-                              alt="Invoice"
-                              src={invoiceImage}
-                            />
-                          ) : (
-                            <Figure.Image
-                              width={296}
-                              height={162}
-                              alt="Invoice"
-                              src={UploadPayment}
-                            />
-                          )}
-                        </Figure>
+                        <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
                       </Row>
                       <div className="d-grid">
                         <ButtonUpload handleFile={handleFile} />
