@@ -8,6 +8,7 @@ import SecHero from "../components/SecHero";
 import "../assets/css/formHasilPencarian.css";
 import CarPagination from "../components/CarPagination";
 import { FcHighPriority } from "react-icons/fc";
+
 const HasilPencarian = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.searchCar);

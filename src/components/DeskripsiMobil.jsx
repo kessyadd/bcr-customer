@@ -12,28 +12,22 @@ import "../assets/css/deskripsiMobil.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiCalendar } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { setEndDate } from "../store/features/rentSlice";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.rent);
-  const [totalDays, setTotalDays] = useState(0);
   const navigate = useNavigate();
   const params = useParams();
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState("false");
   const [totalPrice, setTotalPrice] = useState(0);
-  const [maxDate, setMaxDate] = useState();
   const [start_rent_at, setStart_rent_at] = useState();
   const [finish_rent_at, setFinish_rent_at] = useState();
 
-  let dateFormat1 = "";
-  let dateFormat2 = "";
-  let Difference_In_Time = 0;
-  let Difference_In_Days = 0;
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
 
   useEffect(() => {
     // declare the data fetching function
@@ -45,22 +39,35 @@ const DeskripsiMobil = () => {
     fetchData().catch(console.error);
     const handleDatePicker = () => {
       let date2 = new Date();
+      let dateFormat1 = "";
+      let dateFormat2 = "";
+      let Difference_In_Time = 0;
+      let Difference_In_Days = 0;
 
       const date1 = new Date(dateRange[0]);
-      dateFormat1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+      dateFormat1 =
+        date1.getFullYear() +
+        "-" +
+        (date1.getMonth() + 1) +
+        "-" +
+        date1.getDate();
       setStart_rent_at(dateFormat1);
       if (dateRange[1]) {
         date2 = new Date(dateRange[1]);
-        dateFormat2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+        dateFormat2 =
+          date2.getFullYear() +
+          "-" +
+          (date2.getMonth() + 1) +
+          "-" +
+          date2.getDate();
         setFinish_rent_at(dateFormat2);
         Difference_In_Time = date2.getTime() - date1.getTime();
         Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         if (Difference_In_Days < 7) {
-          setTotalDays(Difference_In_Days + 1);
-          setIsValid(true);
+          setIsValid("true");
           console.log(isValid);
         } else {
-          setIsValid(false);
+          setIsValid("false");
           alert("maksimal peminjaman 7 hari!");
         }
         let totalPrice = 0;
@@ -73,12 +80,17 @@ const DeskripsiMobil = () => {
       console.log(dateRange);
     };
     handleDatePicker();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.carId, dateRange, isValid]);
 
   const handleButton = async () => {
     try {
       const car_id = params.carId;
-      const result = await APIOrder.createNewCarOrder({ start_rent_at, finish_rent_at, car_id });
+      const result = await APIOrder.createNewCarOrder({
+        start_rent_at,
+        finish_rent_at,
+        car_id,
+      });
       if (result) {
         navigate(`/payment/${result.data.id}`);
       }
@@ -107,7 +119,9 @@ const DeskripsiMobil = () => {
                 <h6 className="mb-4 fw-bold">Tentang Paket</h6>
                 <h6 className="fw-bold">Include</h6>
                 <ul>
-                  <li>Apa saja yang termasuk dalam paket misal durasi max 12 jam</li>
+                  <li>
+                    Apa saja yang termasuk dalam paket misal durasi max 12 jam
+                  </li>
                   <li>Sudah termasuk bensin selama 12 jam</li>
                   <li>Sudah termasuk Tiket Wisata</li>
                   <li>Sudah termasuk pajak</li>
@@ -115,19 +129,31 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold">Exclude</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
                 <h6 className="fw-bold">Refund, Reschedule, Overtime</h6>
                 <ul>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                   <li>Tidak termasuk biaya makan sopir Rp 75.000/hari</li>
-                  <li>Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp 20.000/jam</li>
+                  <li>
+                    Jika overtime lebih dari 12 jam akan ada tambahan biaya Rp
+                    20.000/jam
+                  </li>
                   <li>Tidak termasuk akomodasi penginapan</li>
                 </ul>
               </Card>
@@ -138,13 +164,16 @@ const DeskripsiMobil = () => {
                 <h6 className="fw-bold mt-4">{car.name}</h6>
                 <p className="p_jumlah_orang mt-2">
                   <img src={User} alt="user" />
-                  <span class="px-1"></span> {car.category === "small" && "2 - 4 orang"}
+                  <span class="px-1"></span>{" "}
+                  {car.category === "small" && "2 - 4 orang"}
                   {car.category === "medium" && "4 - 6 orang"}
                   {car.category === "Medium" && "4 - 6 orang"}
                   {car.category === "large" && "6 - 8 orang"}
                 </p>
                 <div className="cardetail-date-bg">
-                  <p className="cardetail-date-title">Tentukan lama sewa mobil (max. 7 hari)</p>
+                  <p className="cardetail-date-title">
+                    Tentukan lama sewa mobil (max. 7 hari)
+                  </p>
                   <div className="cardetail-date-input">
                     <DatePicker
                       selectsRange={true}
@@ -170,13 +199,13 @@ const DeskripsiMobil = () => {
                     <p>Total</p>
                   </Col>
                   <Col className="text-end">
-                    <p>Rp {totalPrice}</p>
+                    <p>{formatter.format(totalPrice)}</p>
                   </Col>
                 </Row>
                 <br />
                 <div>
                   <button
-                    // disabled={isValid ? true : false}
+                    disabled={isValid === "false" ? true : false}
                     onClick={handleButton}
                     className="cardetail-button"
                   >
