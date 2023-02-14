@@ -11,9 +11,9 @@ const Instruction = () => {
           <Row>
             <h5 className="mb-4">Intruksi Pembayaran</h5>
             <Row>
-              <Nav fill variant="tabs" defaultActiveKey="/home">
+              <Nav fill variant="tabs" defaultActiveKey="#">
                 <Nav.Item>
-                  <Nav.Link eventKey="link-1">ATM BCA</Nav.Link>
+                  <Nav.Link href="#">ATM BCA</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="link-2">M-BCA</Nav.Link>
