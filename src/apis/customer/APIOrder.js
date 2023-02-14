@@ -4,7 +4,8 @@ const APIOrder = {
   //Create new car order
   createNewCarOrder: async ({ start_rent_at, finish_rent_at, car_id }) => {
     const params = { start_rent_at, finish_rent_at, car_id };
-    const res = await axiosCustomerInstance.post("/order", { params });
+    console.log(params);
+    const res = await axiosCustomerInstance.post("/order", params);
     return res;
   },
 

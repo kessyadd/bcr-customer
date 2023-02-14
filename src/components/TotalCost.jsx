@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 
-const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory }) => {
+const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays }) => {
   const dispatch = useDispatch();
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -27,7 +27,9 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory }) => {
                 <div>
                   <h6 className="fw-bold">Harga</h6>
                   <ul>
-                    <li className="fs-6 fw-normal text-dark">Sewa Mobil {carPrice} x 7 Hari</li>
+                    <li className="fs-6 fw-normal text-dark">
+                      Sewa Mobil {carPrice} x {totalDays} Hari
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -51,7 +53,7 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory }) => {
                     <h6 className="text-start fw-bold">Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bold">{totalPrice}</h6>
+                    <h6 className="text-end fw-bold">Rp. {totalPrice}</h6>
                   </Col>
                 </Row>
               </div>

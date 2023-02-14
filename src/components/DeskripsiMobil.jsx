@@ -7,12 +7,13 @@ import Container from "react-bootstrap/Container";
 import User from "../assets/img/fi_users.png";
 import { useNavigate, useParams } from "react-router-dom";
 import APICar from "../apis/customer/APICar";
+import APIOrder from "../apis/customer/APIOrder";
 import "../assets/css/deskripsiMobil.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiCalendar } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { setCarID, setStartDate, setEndDate, setTotalDays, setTotalPrice, setOrderID } from "../store/features/rentSlice";
+import { setEndDate } from "../store/features/rentSlice";
 
 const DeskripsiMobil = () => {
   const [car, setCar] = useState();
@@ -20,11 +21,19 @@ const DeskripsiMobil = () => {
   const [startDate, endDate] = dateRange;
   const dispatch = useDispatch();
   const state = useSelector((state) => state.rent);
-  const total = state.totalPrice;
+  const [totalDays, setTotalDays] = useState(0);
   const navigate = useNavigate();
   const params = useParams();
-  // const [carCategory, setCarCategory] = useState();
-  // console.log(`deskripsi ${params.carId}`);
+  const [isValid, setIsValid] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [maxDate, setMaxDate] = useState();
+  const [start_rent_at, setStart_rent_at] = useState();
+  const [finish_rent_at, setFinish_rent_at] = useState();
+
+  let dateFormat1 = "";
+  let dateFormat2 = "";
+  let Difference_In_Time = 0;
+  let Difference_In_Days = 0;
 
   useEffect(() => {
     // declare the data fetching function
@@ -33,28 +42,30 @@ const DeskripsiMobil = () => {
       setCar(res.data);
     };
     // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
+    fetchData().catch(console.error);
     const handleDatePicker = () => {
-      dispatch(setCarID(params.carId));
       let date2 = new Date();
-      let dateFormat2 = "";
-      let Difference_In_Time = 0;
-      let Difference_In_Days = 0;
-      let totalPrice = 0;
+
       const date1 = new Date(dateRange[0]);
-      const dateFormat1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
-      dispatch(setStartDate(dateFormat1));
+      dateFormat1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+      setStart_rent_at(dateFormat1);
       if (dateRange[1]) {
         date2 = new Date(dateRange[1]);
         dateFormat2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
-        dispatch(setEndDate(dateFormat2));
+        setFinish_rent_at(dateFormat2);
         Difference_In_Time = date2.getTime() - date1.getTime();
         Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-        dispatch(setTotalDays(Difference_In_Days + 1));
+        if (Difference_In_Days < 7) {
+          setTotalDays(Difference_In_Days + 1);
+          setIsValid(true);
+          console.log(isValid);
+        } else {
+          setIsValid(false);
+          alert("maksimal peminjaman 7 hari!");
+        }
+        let totalPrice = 0;
         totalPrice = car.price * (Difference_In_Days + 1);
-        dispatch(setTotalPrice(totalPrice));
+        setTotalPrice(totalPrice);
       }
       console.log(Difference_In_Days);
       console.log(dateFormat1, dateFormat2);
@@ -62,10 +73,19 @@ const DeskripsiMobil = () => {
       console.log(dateRange);
     };
     handleDatePicker();
-  }, [params.carId, dateRange]);
+  }, [params.carId, dateRange, isValid]);
 
-  const handleButton = () => {
-    navigate("/payment/1805");
+  const handleButton = async () => {
+    try {
+      const car_id = params.carId;
+      const result = await APIOrder.createNewCarOrder({ start_rent_at, finish_rent_at, car_id });
+      if (result) {
+        navigate(`/payment/${result.data.id}`);
+      }
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -150,12 +170,16 @@ const DeskripsiMobil = () => {
                     <p>Total</p>
                   </Col>
                   <Col className="text-end">
-                    <p>Rp {total}</p>
+                    <p>Rp {totalPrice}</p>
                   </Col>
                 </Row>
                 <br />
                 <div>
-                  <button onClick={handleButton} className="cardetail-button">
+                  <button
+                    // disabled={isValid ? true : false}
+                    onClick={handleButton}
+                    className="cardetail-button"
+                  >
                     Lanjutkan Pembayaran
                   </button>
                 </div>

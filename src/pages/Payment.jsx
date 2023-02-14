@@ -25,6 +25,9 @@ const Payment = () => {
   const [invoiceImage, setInvoiceImage] = useState();
   console.log(orderId);
   const [orderData, setOrderData] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [totalDays, setTotalDays] = useState();
 
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   const handleFile = (file) => {
@@ -43,10 +46,22 @@ const Payment = () => {
     const fetchOrderData = async (orderId) => {
       try {
         const result = await APIOrder.getOrderDetails(orderId);
-        console.log(result);
+
         if (result.data) {
           setOrderData(result.data);
-          console.log(orderData);
+          console.log(result.data.start_rent_at);
+          const startDateTemp = new Date(result.data.start_rent_at);
+          const formatStartDate = startDateTemp.getDate() + "-" + (startDateTemp.getMonth() + 1) + "-" + startDateTemp.getFullYear();
+          setStartDate(formatStartDate);
+          const endDateTemp = new Date(result.data.finish_rent_at);
+          const formatEndDate = endDateTemp.getDate() + "-" + (endDateTemp.getMonth() + 1) + "-" + endDateTemp.getFullYear();
+          setEndDate(formatEndDate);
+
+          let Difference_In_Time = endDateTemp.getTime() - startDateTemp.getTime();
+          console.log(Difference_In_Time);
+          let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+          console.log(Difference_In_Days);
+          dispatch(setTotalDays(Difference_In_Days + 1));
         }
       } catch (error) {}
     };
@@ -93,10 +108,10 @@ const Payment = () => {
                         </h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">{orderData.Car.start_rent_at}</h6>
+                        <h6 className="text-black-50 ps-3">{startDate} </h6>
                       </Col>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">{orderData.Car.finish_rent_at}</h6>
+                        <h6 className="text-black-50 ps-3">{endDate}</h6>
                       </Col>
                     </Row>
                   </Row>
@@ -107,7 +122,7 @@ const Payment = () => {
                   <ChoosePayment />
                 </Col>
                 <Col xs={6} md={4}>
-                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} />
+                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} totalDays={totalDays} />
                 </Col>
               </Row>
             </Container>

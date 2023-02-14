@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/ListGroup";
 import "../assets/css/payment.css";
 
 const ChoosePayment = () => {
+  // const [checked, setChecked] = useState(false);
+
+  // const canBeSubmitted = () => {
+  //   return checked ? setIsDisabled(true) : setIsDisabled(false);
+  // };
+
+  // const onCheckboxClick = () => {
+  //   setChecked(!checked);
+  //   return canBeSubmitted();
+  // };
+
   return (
     <div className="pilih-transfer d-flex justify-content-center">
       <ListGroup className="choose-payment">
