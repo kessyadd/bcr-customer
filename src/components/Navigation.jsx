@@ -44,7 +44,7 @@ const Navigation = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/#ourServices" className="color-black">
-                  Our Service
+                  Our Services
                 </Nav.Link>
                 <Nav.Link href="/#whyUs" className="color-black">
                   Why Us

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { STEPS, setStep } from "../store/features/rentSlice";
@@ -6,9 +6,18 @@ import { useDispatch } from "react-redux";
 import { ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 
-const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays }) => {
+const RincianBiaya = ({
+  carName,
+  totalPrice,
+  carPrice,
+  carCategory,
+  totalDays,
+}) => {
   const dispatch = useDispatch();
-  const [isDisabled, setIsDisabled] = useState(true);
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
 
   return (
     <div className="m-5">
@@ -28,7 +37,7 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                   <h6 className="fw-bold">Harga</h6>
                   <ul>
                     <li className="fs-6 fw-normal text-dark">
-                      Sewa Mobil {carPrice} x {totalDays} Hari
+                      Sewa Mobil {formatter.format(carPrice)} x {totalDays} Hari
                     </li>
                   </ul>
                 </div>
@@ -36,7 +45,9 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                   <h6 className="fw-bold">Biaya Lainnya</h6>
                   <ul>
                     <li className="fs-6 fw-normal text-dark">Pajak</li>
-                    <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
+                    <li className="fs-6 fw-normal text-dark">
+                      Biaya makan sopir
+                    </li>
                   </ul>
                 </div>
                 <h6 className="fw-bold">Belum Termasuk</h6>
@@ -53,14 +64,15 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                     <h6 className="text-start fw-bold">Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bold">Rp. {totalPrice}</h6>
+                    <h6 className="text-end fw-bold">
+                      {formatter.format(totalPrice)}
+                    </h6>
                   </Col>
                 </Row>
               </div>
               <button
                 className="green-button justify-content-center mt-2"
                 variant="success"
-                // disabled={isDisabled}
                 onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
               >
                 Bayar
