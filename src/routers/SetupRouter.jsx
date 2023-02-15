@@ -19,7 +19,7 @@ const SetupRouter = () => {
         <Routes>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/payment/:orderId" element={<Payment />} />
-            <Route path="/e-tiket" element={<Tiket />} />
+            <Route path="/e-tiket/:orderId" element={<Tiket />} />
           </Route>
           <Route path="/" element={<ProtectedRoute />}>
             <Route path="/sign-in" element={<SignIn />} />
