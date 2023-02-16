@@ -56,39 +56,13 @@ const ButtonUpload = (props) => {
 
   return (
     <>
-      <Figure className="align-item-center">
-        {invoiceImage ? (
-          <Figure.Image
-            width={296}
-            height={162}
-            alt="Invoice"
-            src={invoiceImage}
-          />
-        ) : (
-          <Figure.Image
-            width={296}
-            height={162}
-            alt="Invoice"
-            src={UploadPayment}
-          />
-        )}
-      </Figure>
+      <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control
-            name="slip"
-            type="file"
-            ref={hiddenFileInput}
-            onChange={handleChange}
-            style={{ display: "none" }}
-          />
+          <Form.Control name="slip" type="file" ref={hiddenFileInput} onChange={handleChange} style={{ display: "none" }} />
         </Form.Group>
         {isSlip === "false" && (
-          <Button
-            className="green-button"
-            variant="success"
-            onClick={handleClick}
-          >
+          <Button className="green-button" variant="success" onClick={handleClick}>
             Upload
           </Button>
         )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Checklist from "../assets/img/success.png";
 import InvoicePDF from "../assets/img/Rectangle38.png";
@@ -20,7 +20,18 @@ const Tiket = () => {
             <Col className="d-flex justify-content-center mt-5">
               <Card style={{ width: 605, height: 290 }}>
                 <Card.Body>
-                  <h6 className="text-start fw-bold">Invoice</h6>
+                  <Row>
+                    <Col>
+                      <h6 className="text-start fw-bold ms-2 mt-2">Invoice</h6>
+                    </Col>
+                    <Col className="text-end d-grid">
+                      <Button variant="outline-primary">
+                        <a href="#" style={{ color: "blue", textDecoration: "none" }}>
+                          Unduh
+                        </a>
+                      </Button>
+                    </Col>
+                  </Row>
                   <div className="d-flex justify-content-center mt-5">
                     <img src={InvoicePDF} />
                   </div>
