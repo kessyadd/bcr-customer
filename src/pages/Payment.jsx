@@ -13,7 +13,8 @@ import PaymentCountdown from "../components/PaymentCountdown";
 import Rekening from "../components/Rekening";
 import Instruction from "../components/Instruction";
 import ButtonUpload from "../components/ButtonUpload";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import * as Icon from "react-feather";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -24,6 +25,11 @@ const Payment = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [totalDays, setTotalDays] = useState();
+  const navigate = useNavigate();
+
+  const backButton = () => {
+    navigate(`/detil-mobil`);
+  };
 
   React.useEffect(() => {
     const fetchOrderData = async (orderId) => {
@@ -61,10 +67,12 @@ const Payment = () => {
               <Container className="justify-content center">
                 <Row>
                   <Col>
-                    <a href="#" id="shopping-cart">
-                      <i data-feather="shopping-cart"></i>
-                    </a>
-                    <h6 className="text-start"> ----Pembayaran</h6>
+                    <h6 className="text-start">
+                      <a onClick={backButton}>
+                        <Icon.ArrowLeft size={24} color={"black"} />
+                      </a>
+                      Pembayaran
+                    </h6>
                   </Col>
                   <Col>
                     <h6 className="text-end">pilih metode</h6>
