@@ -34,24 +34,13 @@ const Payment = () => {
           setOrderData(result.data);
           console.log(result.data.start_rent_at);
           const startDateTemp = new Date(result.data.start_rent_at);
-          const formatStartDate =
-            startDateTemp.getDate() +
-            "-" +
-            (startDateTemp.getMonth() + 1) +
-            "-" +
-            startDateTemp.getFullYear();
+          const formatStartDate = startDateTemp.getDate() + "-" + (startDateTemp.getMonth() + 1) + "-" + startDateTemp.getFullYear();
           setStartDate(formatStartDate);
           const endDateTemp = new Date(result.data.finish_rent_at);
-          const formatEndDate =
-            endDateTemp.getDate() +
-            "-" +
-            (endDateTemp.getMonth() + 1) +
-            "-" +
-            endDateTemp.getFullYear();
+          const formatEndDate = endDateTemp.getDate() + "-" + (endDateTemp.getMonth() + 1) + "-" + endDateTemp.getFullYear();
           setEndDate(formatEndDate);
 
-          let Difference_In_Time =
-            endDateTemp.getTime() - startDateTemp.getTime();
+          let Difference_In_Time = endDateTemp.getTime() - startDateTemp.getTime();
           console.log(Difference_In_Time);
           let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
           console.log(Difference_In_Days);
@@ -69,6 +58,19 @@ const Payment = () => {
         <>
           {step === STEPS.SELECT_DATE && (
             <Container className="mt-3 ">
+              <Container className="justify-content center">
+                <Row>
+                  <Col>
+                    <a href="#" id="shopping-cart">
+                      <i data-feather="shopping-cart"></i>
+                    </a>
+                    <h6 className="text-start"> ----Pembayaran</h6>
+                  </Col>
+                  <Col>
+                    <h6 className="text-end">pilih metode</h6>
+                  </Col>
+                </Row>
+              </Container>
               <Container className="d-flex justify-content-center">
                 <Card style={{ width: 1042, height: 124 }}>
                   <Row className="d-flex justify-content-center">
@@ -91,9 +93,7 @@ const Payment = () => {
                     </Row>
                     <Row>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">
-                          {orderData.Car.name}
-                        </h6>
+                        <h6 className="text-black-50 ps-3">{orderData.Car.name}</h6>
                       </Col>
                       <Col lg={3} sm={12}>
                         <h6 className="text-black-50 ps-3">
@@ -118,13 +118,7 @@ const Payment = () => {
                   <ChoosePayment />
                 </Col>
                 <Col xs={6} md={4}>
-                  <TotalCost
-                    carName={orderData.Car.name}
-                    totalPrice={orderData.total_price}
-                    carPrice={orderData.Car.price}
-                    carCategory={orderData.Car.category}
-                    totalDays={totalDays}
-                  />
+                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} totalDays={totalDays} />
                 </Col>
               </Row>
             </Container>
@@ -141,18 +135,9 @@ const Payment = () => {
                 <Col>
                   <Card style={{ width: 405, height: 148 }}>
                     <Card.Body className="p-3">
-                      <h6 className="fs-6 mb-4">
-                        Klik konfirmasi pembayaran untuk mempercepat proses
-                        pengecekan
-                      </h6>
+                      <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
                       <div className="d-grid">
-                        <button
-                          className="green-button"
-                          variant="success"
-                          onClick={() =>
-                            dispatch(setStep(STEPS.PAYMENT_SUCCESS))
-                          }
-                        >
+                        <button className="green-button" variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
                           Konfirmasi Pembayaran
                         </button>
                       </div>
@@ -177,20 +162,13 @@ const Payment = () => {
                         <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">
-                          Terima kasih telah melakukan konfirmasi pembayaran.
-                          Pembayaranmu akan segera kami cek tunggu kurang lebih
-                          10 menit untuk mendapatkan konfirmasi.
-                        </h6>
+                        <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>
                       </Row>
                       <Row>
                         <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">
-                          Untuk membantu kami lebih cepat melakukan pengecekan.
-                          Kamu bisa upload bukti bayarmu
-                        </h6>
+                        <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
                       </Row>
                       <Row>
                         <Col>
