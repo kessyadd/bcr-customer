@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import "../assets/css/signIn.css";
 import APIRegis from "../apis/customer/APIRegistration";
 import GrayButton from "../assets/img/rectangle.png";
-import CustomHemlet from "../components/CustomHelmet";
+// import CustomHemlet from "../components/CustomHelmet";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -44,14 +44,10 @@ const SignUp = () => {
 
   return (
     <>
-      <CustomHemlet />
+      {/* <CustomHemlet /> */}
       <Container className="container-fluid">
         <Row>
-          <Col
-            lg={6}
-            className="sign-in p-5 justify-items-center"
-            style={{ display: "flex", alignItems: "center" }}
-          >
+          <Col lg={6} className="sign-in p-5 justify-items-center" style={{ display: "flex", alignItems: "center" }}>
             <Row>
               <Col lg={12}>
                 <img src={GrayButton} alt="gray" />
@@ -70,37 +66,18 @@ const SignUp = () => {
                 >
                   <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label className="fw-semibold">Name*</Form.Label>
-                    <Form.Control
-                      style={{ borderRadius: 5 }}
-                      type="name"
-                      placeholder="Nama Lengkap"
-                    />
+                    <Form.Control style={{ borderRadius: 5 }} type="name" placeholder="Nama Lengkap" />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className="fw-semibold">Email*</Form.Label>
-                    <Form.Control
-                      style={{ borderRadius: 5 }}
-                      type="email"
-                      name="email"
-                      placeholder="Contoh: johndoe@gmail.com"
-                    />
+                    <Form.Control style={{ borderRadius: 5 }} type="email" name="email" placeholder="Contoh: johndoe@gmail.com" />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className="fw-semibold">Password*</Form.Label>
-                    <Form.Control
-                      style={{ borderRadius: 5 }}
-                      type="password"
-                      name="password"
-                      placeholder="6+ karakter"
-                    />
+                    <Form.Control style={{ borderRadius: 5 }} type="password" name="password" placeholder="6+ karakter" />
                   </Form.Group>
                   <div className="d-grid">
-                    <button
-                      className="button-register"
-                      variant="primary"
-                      type="submit"
-                      size="lg"
-                    >
+                    <button className="button-register" variant="primary" type="submit" size="lg">
                       Sign Up
                     </button>
                   </div>

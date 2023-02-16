@@ -8,7 +8,7 @@ import SecHero from "../components/SecHero";
 import "../assets/css/formHasilPencarian.css";
 import CarPagination from "../components/CarPagination";
 import { FcHighPriority } from "react-icons/fc";
-import CustomHemlet from "../components/CustomHelmet";
+// import CustomHemlet from "../components/CustomHelmet";
 
 const HasilPencarian = () => {
   const dispatch = useDispatch();
@@ -60,13 +60,9 @@ const HasilPencarian = () => {
   }, [dispatch, filters]);
   return (
     <>
-      <CustomHemlet />
+      {/* <CustomHemlet /> */}
       <SecHero />
-      {filters ? (
-        <FormHasilPencarian isEdit={true} isDisabled={false} />
-      ) : (
-        <></>
-      )}
+      {filters ? <FormHasilPencarian isEdit={true} isDisabled={false} /> : <></>}
       <section className="m-5 p-3"></section>
       <Container id="spn" />
       <CardCarRender />
