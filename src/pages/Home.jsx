@@ -6,13 +6,15 @@ import CtaSewaMobil from "../components/CtaSewaMobil";
 import Faq from "../components/Faq";
 import Testimonials from "../components/Testimonials";
 import { useEffect } from "react";
+import CustomHemlet from "../components/CustomHelmet";
 
 const Home = () => {
-  useEffect(() => {
-    document.title = "Binar Car Rental - Home";
-  }, []);
+  // useEffect(() => {
+  //   document.title = "Binar Car Rental - Home";
+  // }, []);
   return (
     <>
+      <CustomHemlet />
       <Hero isButton={true} />
       <OurServices />
       <WhyUs />
