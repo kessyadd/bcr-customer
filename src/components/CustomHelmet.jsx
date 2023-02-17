@@ -92,6 +92,7 @@ const CustomHemlet = ({ title, url, description }) => {
 
   const location = useLocation();
   const [data, setData] = useState();
+  const pageUrl = window.location.href;
 
   useEffect(() => {
     setData(generateTitle(dataRouters, location.pathname));
@@ -105,7 +106,7 @@ const CustomHemlet = ({ title, url, description }) => {
           <title>{data.name} - BCR Customer</title>
           <meta property="og:title" content={data.ogTitle} />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={location.pathname} />
+          <meta property="og:url" content={pageUrl} />
           <meta property="og:description" content={data.ogDescription} />
         </Helmet>
       )}
