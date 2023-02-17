@@ -1,8 +1,12 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { Row, Col } from "react-bootstrap";
+import Timer from "../components/Timer";
 
 const PaymentCountdown = () => {
+  const current = new Date();
+  const date = `${current.getDate() + 1}/${current.getMonth() + 1}/${current.getFullYear()}`;
+
   return (
     <>
       <Card className="p-2" style={{ width: 605, height: 96 }}>
@@ -10,9 +14,11 @@ const PaymentCountdown = () => {
           <Row>
             <Col>
               <h6 className="fw-bold">Selesaikan Pembayaran Sebelum</h6>
-              <h6 className="fw-normal">Rabu, 19 Mei 2022 jam 13.00 WIB</h6>
+              <p className="fw-normal date-now">{date}</p>
             </Col>
-            <Col></Col>
+            <Col>
+              <Timer />
+            </Col>
           </Row>
         </Card.Body>
       </Card>

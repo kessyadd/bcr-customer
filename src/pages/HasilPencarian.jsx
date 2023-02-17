@@ -62,11 +62,7 @@ const HasilPencarian = () => {
     <>
       <CustomHemlet />
       <SecHero />
-      {filters ? (
-        <FormHasilPencarian isEdit={true} isDisabled={false} />
-      ) : (
-        <></>
-      )}
+      {filters ? <FormHasilPencarian isEdit={true} isDisabled={false} /> : <></>}
       <section className="m-5 p-3"></section>
       <Container id="spn" />
       <CardCarRender />
