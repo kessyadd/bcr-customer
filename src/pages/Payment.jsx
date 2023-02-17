@@ -25,11 +25,6 @@ const Payment = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [totalDays, setTotalDays] = useState();
-  const navigate = useNavigate();
-
-  const backButton = () => {
-    navigate(`/detil-mobil`);
-  };
 
   React.useEffect(() => {
     const fetchOrderData = async (orderId) => {
@@ -64,21 +59,6 @@ const Payment = () => {
         <>
           {step === STEPS.SELECT_DATE && (
             <Container className="mt-3 ">
-              <Container className="justify-content center">
-                <Row>
-                  <Col>
-                    <h6 className="text-start">
-                      <a onClick={backButton}>
-                        <Icon.ArrowLeft size={24} color={"black"} />
-                      </a>
-                      Pembayaran
-                    </h6>
-                  </Col>
-                  <Col>
-                    <h6 className="text-end">pilih metode</h6>
-                  </Col>
-                </Row>
-              </Container>
               <Container className="d-flex justify-content-center">
                 <Card style={{ width: 1042, height: 124 }}>
                   <Row className="d-flex justify-content-center">
