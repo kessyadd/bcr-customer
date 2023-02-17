@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Figure } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import { useAsyncError, useNavigate, useParams } from "react-router";
 import APIOrder from "../apis/customer/APIOrder";
-import { selectIsSlip, setIsSlip } from "../store/features/rentSlice";
+import { selectIsSlip, setIsSlip, setOrderData } from "../store/features/rentSlice";
 import UploadPayment from "../assets/img/frame39.png";
+import "../assets/css/payment.css";
 
 const ButtonUpload = (props) => {
   const params = useParams();
@@ -13,6 +14,9 @@ const ButtonUpload = (props) => {
   const isSlip = useSelector(selectIsSlip);
   const [invoiceImage, setInvoiceImage] = useState();
 
+  const state = useSelector((state) => state.rent);
+  // const totalDays = state.totalDays;
+  // console.log(totalDays);
   const hiddenFileInput = React.useRef(null);
   const orderId = params.orderId;
 
@@ -33,6 +37,7 @@ const ButtonUpload = (props) => {
       try {
         const result = await APIOrder.uploadPaymentSlip(orderId, formData);
         if (result.status === 200) {
+          dispatch(setOrderData(result.data));
           navigate(`/e-tiket/${orderId}`);
         }
         console.log(result);
@@ -56,46 +61,20 @@ const ButtonUpload = (props) => {
 
   return (
     <>
-      <Figure className="align-item-center">
-        {invoiceImage ? (
-          <Figure.Image
-            width={296}
-            height={162}
-            alt="Invoice"
-            src={invoiceImage}
-          />
-        ) : (
-          <Figure.Image
-            width={296}
-            height={162}
-            alt="Invoice"
-            src={UploadPayment}
-          />
-        )}
-      </Figure>
+      <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control
-            name="slip"
-            type="file"
-            ref={hiddenFileInput}
-            onChange={handleChange}
-            style={{ display: "none" }}
-          />
+          <Form.Control name="slip" type="file" ref={hiddenFileInput} onChange={handleChange} style={{ display: "none" }} />
         </Form.Group>
         {isSlip === "false" && (
-          <Button
-            className="green-button"
-            variant="success"
-            onClick={handleClick}
-          >
+          <button className="green-button" variant="success" onClick={handleClick}>
             Upload
-          </Button>
+          </button>
         )}
         {isSlip === "true" && (
-          <Button className="green-button" variant="success" type="submit">
+          <button className="green-button" variant="success" type="submit">
             Konfirmasi
-          </Button>
+          </button>
         )}
       </Form>
     </>
