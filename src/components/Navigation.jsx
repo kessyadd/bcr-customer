@@ -9,7 +9,6 @@ import ButtonSignIn from "./ButtonSignIn";
 import ButtonRegister from "./ButtonRegister";
 import Auth from "../utils/Auth";
 import ButtonSignOut from "./ButtonSignOut";
-import CustomHemlet from "./CustomHelmet";
 
 const expand = "sm";
 

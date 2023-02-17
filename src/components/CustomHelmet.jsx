@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Helmet from "react-helmet";
+import { Helmet, HelmetData } from "react-helmet-async";
 import { useLocation } from "react-router";
 
 const CustomHemlet = ({ title, url, description }) => {
@@ -76,20 +76,22 @@ const CustomHemlet = ({ title, url, description }) => {
 
   const location = useLocation();
   const [data, setData] = useState();
+  const pageUrl = window.location.href;
 
   useEffect(() => {
     setData(generateTitle(dataRouters, location.pathname));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
+  const helmetData = new HelmetData({});
   return (
     <>
       {data && (
-        <Helmet>
+        <Helmet helmetData={helmetData}>
           <title>{data.name} - BCR Customer</title>
           <meta property="og:title" content={data.ogTitle} />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={location.pathname} />
+          <meta property="og:url" content={pageUrl} />
           <meta property="og:description" content={data.ogDescription} />
         </Helmet>
       )}
