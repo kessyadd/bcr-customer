@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import "../assets/css/signIn.css";
 import APIRegis from "../apis/customer/APIRegistration";
 import GrayButton from "../assets/img/rectangle.png";
-// import CustomHemlet from "../components/CustomHelmet";
+import CustomHemlet from "../components/CustomHelmet";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const SignUp = () => {
 
   return (
     <>
-      {/* <CustomHemlet /> */}
+      <CustomHemlet />
       <Container className="container-fluid">
         <Row>
           <Col lg={6} className="sign-in p-5 justify-items-center" style={{ display: "flex", alignItems: "center" }}>

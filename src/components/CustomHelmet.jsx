@@ -54,9 +54,9 @@ const CustomHemlet = ({ title, url, description }) => {
       ogDescription: "Lakukan pembayaran untuk melanjutkan proses penyewaan mobil anda!",
     },
     {
-      key: 6,
-      name: "Payment",
-      path: "/payment",
+      key: 7,
+      name: "E-Ticket",
+      path: "/e-tiket",
       ogTitle: "Binar Car Rental E-Ticket - Sewa & Rental Mobil Terbaik di Kawasan Jakarta",
       ogDescription: "Download E-Ticket untuk ditunjukkan saat melakukan sewa mobil",
     },

@@ -3,10 +3,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Checklist from "../assets/img/success.png";
 import InvoicePDF from "../assets/img/Rectangle38.png";
+import CustomHemlet from "../components/CustomHelmet";
 
 const Tiket = () => {
   return (
     <>
+      <CustomHemlet />
       <Container>
         <Row>
           <Col>

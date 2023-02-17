@@ -15,6 +15,7 @@ import Instruction from "../components/Instruction";
 import ButtonUpload from "../components/ButtonUpload";
 import { useNavigate, useParams } from "react-router";
 import * as Icon from "react-feather";
+import CustomHemlet from "../components/CustomHelmet";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -59,6 +60,7 @@ const Payment = () => {
       console.log(orderData.Car.name);
       return (
         <>
+          <CustomHemlet />
           {step === STEPS.SELECT_DATE && (
             <Container className="mt-3 ">
               <Container>
