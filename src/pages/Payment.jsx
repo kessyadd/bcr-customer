@@ -68,7 +68,7 @@ const Payment = () => {
                   <Col className="ms-5">
                     <Icon.ArrowLeft /> Pembayaran
                   </Col>
-                  <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col>
+                  {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
                 </Row>
               </Container>
               <Container className="d-flex justify-content-center">
@@ -126,6 +126,16 @@ const Payment = () => {
 
           {step === STEPS.CONFIRM_PAYMENT && (
             <Container className="mt-3">
+              <Container>
+                <Row className="m-4">
+                  <Col className="ms-5">
+                    <button style={{ border: "none", background: "white" }} onClick={() => dispatch(setStep(STEPS.SELECT_DATE))}>
+                      <Icon.ArrowLeft /> Pembayaran
+                    </button>
+                  </Col>
+                  {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                </Row>
+              </Container>
               <Row>
                 <Col>
                   <PaymentCountdown />
@@ -148,8 +158,21 @@ const Payment = () => {
             </Container>
           )}
           {step === STEPS.PAYMENT_SUCCESS && (
-            <Container className="mt-3">
-              <Row>
+            <Container className="mt-3 ">
+              <Row className="d-flex justify-content-center">
+                <Container>
+                  <Row className="m-4">
+                    <Col className="ms-5">
+                      <button style={{ border: "none", background: "white" }} onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
+                        <h6>
+                          <Icon.ArrowLeft /> BCA Transfer
+                        </h6>
+                      </button>
+                      <h6>Order Id : {orderId}</h6>
+                    </Col>
+                    {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                  </Row>
+                </Container>
                 <Col>
                   <PaymentCountdown />
                   <Rekening amountTransfer={orderData.total_price} />
