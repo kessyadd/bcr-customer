@@ -34,7 +34,7 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                     <h6>Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bolder">{formatter.format(carPrice)}</h6>
+                    <h6 className="text-end fw-bolder">{formatter.format(totalPrice)}</h6>
                   </Col>
                 </Row>
                 <div>
@@ -55,16 +55,29 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                     </Col>
                     <Col>
                       {" "}
-                      <h6 className="text-end fw-normal">{formatter.format(carPrice)}</h6>
+                      <h6 className="text-end fw-normal">{formatter.format(totalPrice)}</h6>
                     </Col>
                   </Row>
                 </div>
                 <div>
                   <h6 className="fw-bold">Biaya Lainnya</h6>
-                  <ul>
-                    <li className="fs-6 fw-normal text-dark">Pajak</li>
-                    <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
-                  </ul>
+                  <Row>
+                    <Col>
+                      {" "}
+                      <ul>
+                        <li className="fs-6 fw-normal text-dark">Pajak</li>
+                        <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
+                      </ul>
+                    </Col>
+                    <Col>
+                      <h6 style={{ color: "#5CB85F" }} className="fw-normal text-end">
+                        Termasuk
+                      </h6>
+                      <h6 style={{ color: "#5CB85F" }} className="fw-normal text-end">
+                        Termasuk
+                      </h6>
+                    </Col>
+                  </Row>
                 </div>
                 <h6 className="fw-bold">Belum Termasuk</h6>
                 <ul>

@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Checklist from "../assets/img/success.png";
 import InvoicePDF from "../assets/img/Rectangle38.png";
 import CustomHemlet from "../components/CustomHelmet";
+import * as Icon from "react-feather";
 
 const Tiket = () => {
   return (
@@ -26,10 +27,10 @@ const Tiket = () => {
                     <Col>
                       <h6 className="text-start fw-bold ms-2 mt-2">Invoice</h6>
                     </Col>
-                    <Col className="text-end d-grid">
+                    <Col className="text-end">
                       <Button variant="outline-primary">
                         <a href="#" style={{ color: "blue", textDecoration: "none" }}>
-                          Unduh
+                          <Icon.Download /> Unduh
                         </a>
                       </Button>
                     </Col>

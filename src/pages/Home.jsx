@@ -6,7 +6,7 @@ import CtaSewaMobil from "../components/CtaSewaMobil";
 import Faq from "../components/Faq";
 import Testimonials from "../components/Testimonials";
 import { useEffect } from "react";
-// import CustomHemlet from "../components/CustomHelmet";
+import CustomHemlet from "../components/CustomHelmet";
 
 const Home = () => {
   // useEffect(() => {
@@ -14,7 +14,7 @@ const Home = () => {
   // }, []);
   return (
     <>
-      {/* <CustomHemlet /> */}
+      <CustomHemlet />
       <Hero isButton={true} />
       <OurServices />
       <WhyUs />
