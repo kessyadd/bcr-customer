@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Helmet from "react-helmet";
+import { Helmet, HelmetData } from "react-helmet-async";
 import { useLocation } from "react-router";
 
 const CustomHemlet = ({ title, url, description }) => {
@@ -99,10 +99,11 @@ const CustomHemlet = ({ title, url, description }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
+  const helmetData = new HelmetData({});
   return (
     <>
       {data && (
-        <Helmet>
+        <Helmet helmetData={helmetData}>
           <title>{data.name} - BCR Customer</title>
           <meta property="og:title" content={data.ogTitle} />
           <meta property="og:type" content="website" />
