@@ -26,6 +26,8 @@ const Payment = () => {
   const [endDate, setEndDate] = useState();
   const [totalDays, setTotalDays] = useState();
 
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     const fetchOrderData = async (orderId) => {
       try {
@@ -59,6 +61,14 @@ const Payment = () => {
         <>
           {step === STEPS.SELECT_DATE && (
             <Container className="mt-3 ">
+              <Container>
+                <Row className="m-4">
+                  <Col className="ms-5">
+                    <Icon.ArrowLeft /> Pembayaran
+                  </Col>
+                  <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col>
+                </Row>
+              </Container>
               <Container className="d-flex justify-content-center">
                 <Card style={{ width: 1042, height: 124 }}>
                   <Row className="d-flex justify-content-center">
