@@ -95,11 +95,13 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                   <Col>
                     <h6 className="text-end fw-bold">{formatter.format(totalPrice)}</h6>
                   </Col>
+                  <Col>
+                    <button className="green-button justify-content-center mt-2" variant="success" onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
+                      Bayar
+                    </button>
+                  </Col>
                 </Row>
               </div>
-              <button className="green-button justify-content-center mt-2" variant="success" onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
-                Bayar
-              </button>{" "}
             </ListGroupItem>
           </ListGroup>
         </Card.Body>
