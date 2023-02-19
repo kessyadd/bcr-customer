@@ -18,11 +18,12 @@
 }
 
 .choose-payment {
-  margin: 2rem;
+  margin-left: 8rem;
+  margin-top: 2rem;
   width: 605px;
-  height: 320px;
+  /* height: 320px;
   left: 441px;
-  top: 352px;
+  top: 352px; */
 }
 
 .total {
