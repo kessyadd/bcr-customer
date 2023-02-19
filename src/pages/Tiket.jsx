@@ -22,13 +22,7 @@ const Tiket = () => {
       <Container>
         <Row>
           <Row className="m-4">
-            <Col className="ms-5">
-              <button style={{ border: "none", background: "white" }}>
-                <h6>
-                  <Icon.ArrowLeft /> BCA Transfer
-                </h6>
-              </button>
-            </Col>
+            <Col className="ms-5"></Col>
             {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
             <div className="col-md-8">
               <div className="state-payment">
@@ -48,9 +42,7 @@ const Tiket = () => {
               <img style={{ width: 50, height: 50 }} src={Checklist} />
             </div>
             <h5 className="text-center fw-bold mt-4">Pembayaran Berhasil!</h5>
-            <h5 className="text-center text-muted fw-normal mt-3">
-              Tunjukkan invoice ini ke petugas BCR di titik temu.
-            </h5>
+            <h5 className="text-center text-muted fw-normal mt-3">Tunjukkan invoice ini ke petugas BCR di titik temu.</h5>
           </Col>
           <Row>
             <Col className="d-flex justify-content-center mt-5">
