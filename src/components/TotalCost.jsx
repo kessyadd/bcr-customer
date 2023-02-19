@@ -29,7 +29,7 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                 {carCategory === "large" && "6 - 8 orang"}
               </h6>
               <div>
-                <Row className="mt-5 mb-4">
+                <Row className="mt-2">
                   <Col>
                     <h6>Total</h6>
                   </Col>
