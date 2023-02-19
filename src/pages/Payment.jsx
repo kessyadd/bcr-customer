@@ -16,6 +16,7 @@ import ButtonUpload from "../components/ButtonUpload";
 import { useNavigate, useParams } from "react-router";
 import * as Icon from "react-feather";
 import CustomHemlet from "../components/CustomHelmet";
+import ShortCountdown from "../components/ShortCountdown";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -182,7 +183,12 @@ const Payment = () => {
                   <Card style={{ width: 405, height: 474 }}>
                     <Card.Body className="p-3">
                       <Row>
-                        <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
+                        <Col>
+                          <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
+                        </Col>
+                        <Col>
+                          <ShortCountdown />
+                        </Col>
                       </Row>
                       <Row>
                         <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>

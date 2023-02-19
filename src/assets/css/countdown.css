@@ -23,3 +23,29 @@
   justify-content: center;
   margin: 0 5px;
 }
+
+.count10minute {
+  display: flex;
+}
+
+.count10minute .clock2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.count10minute .clock2 span {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  background: #fa2c5a;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  margin: 0 5px;
+}
