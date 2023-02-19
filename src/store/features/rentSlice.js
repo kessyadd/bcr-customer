@@ -21,6 +21,7 @@ const initialState = {
   },
   carData: null,
   isSlip: "false",
+  orderData: null,
 };
 
 const paymentSlice = createSlice({
@@ -63,23 +64,13 @@ const paymentSlice = createSlice({
     setIsSlip: (state, action) => {
       state.isSlip = action.payload;
     },
+    setOrderData: (state, action) => {
+      state.orderData = action.payload;
+    },
   },
 });
 
-export const {
-  setCarData,
-  setDateRange,
-  setStep,
-  setMethod,
-  setInvoice,
-  setStartDate,
-  setEndDate,
-  setCarID,
-  setTotalDays,
-  setTotalPrice,
-  setOrderID,
-  setIsSlip,
-} = paymentSlice.actions;
+export const { setCarData, setDateRange, setStep, setMethod, setInvoice, setStartDate, setEndDate, setCarID, setTotalDays, setTotalPrice, setOrderID, setIsSlip, setOrderData } = paymentSlice.actions;
 export default paymentSlice.reducer;
 
 export const selectIsSlip = (state) => state.rent.isSlip;
