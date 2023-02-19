@@ -16,7 +16,8 @@ import ButtonUpload from "../components/ButtonUpload";
 import { useParams } from "react-router";
 import * as Icon from "react-feather";
 import CustomHemlet from "../components/CustomHelmet";
-import Rect from "../assets/img/rect.svg";
+import ShortCountdown from "../components/ShortCountdown";
+
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -77,6 +78,7 @@ const Payment = () => {
                   <Col className="ms-5">
                     <Icon.ArrowLeft /> Pembayaran
                   </Col>
+
                   {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
                   <div className="col-md-8">
                     <div className="state-payment">
@@ -90,6 +92,7 @@ const Payment = () => {
                       <h5>Tiket</h5>
                     </div>
                   </div>
+
                 </Row>
               </Container>
               <Container className="d-flex justify-content-center">
@@ -221,7 +224,7 @@ const Payment = () => {
                       </button>
                       <h6>Order Id : {orderId}</h6>
                     </Col>
-                    {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                    <Col></Col>
                   </Row>
                 </Container>
                 <Col>
@@ -233,7 +236,12 @@ const Payment = () => {
                   <Card style={{ width: 405, height: 474 }}>
                     <Card.Body className="p-3">
                       <Row>
-                        <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
+                        <Col>
+                          <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
+                        </Col>
+                        <Col>
+                          <ShortCountdown />
+                        </Col>
                       </Row>
                       <Row>
                         <h6 className="fw-normal ">
