@@ -69,7 +69,7 @@ const Payment = () => {
                   <Col className="ms-5">
                     <Icon.ArrowLeft /> Pembayaran
                   </Col>
-                  {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                  <Col></Col>
                 </Row>
               </Container>
               <Container className="d-flex justify-content-center">
@@ -171,7 +171,7 @@ const Payment = () => {
                       </button>
                       <h6>Order Id : {orderId}</h6>
                     </Col>
-                    {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                    <Col></Col>
                   </Row>
                 </Container>
                 <Col>
