@@ -77,3 +77,16 @@ body {
   line-height: 20px;
   border-radius: 2px;
 }
+
+.cardetail-button:disabled {
+  border: none;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #8a8a8a;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 2px;
+}

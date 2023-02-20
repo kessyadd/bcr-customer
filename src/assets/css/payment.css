@@ -43,6 +43,11 @@
   margin-top: 200px;
 }
 
+.confirm-payment-btn:disabled {
+  background-color: #8a8a8a;
+  color: white;
+}
+
 .state-payment {
   display: flex;
   justify-content: right;
