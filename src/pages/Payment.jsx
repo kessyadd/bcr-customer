@@ -16,6 +16,9 @@ import ButtonUpload from "../components/ButtonUpload";
 import { useParams } from "react-router";
 import * as Icon from "react-feather";
 import CustomHemlet from "../components/CustomHelmet";
+import ShortCountdown from "../components/ShortCountdown";
+import Rect from "../assets/img/rect.svg";
+import { useNavigate } from "react-router";
 
 const Payment = () => {
   const step = useSelector(selectStepPayment);
@@ -26,6 +29,11 @@ const Payment = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [totalDays, setTotalDays] = useState();
+  const navigate = useNavigate;
+
+  const backButton = () => {
+    navigate(`/detil-mobil`);
+  };
 
   React.useEffect(() => {
     const fetchOrderData = async (orderId) => {
@@ -75,9 +83,25 @@ const Payment = () => {
               <Container>
                 <Row className="m-4">
                   <Col className="ms-5">
-                    <Icon.ArrowLeft /> Pembayaran
+                    <button
+                      style={{ border: "none", backgroundColor: "white" }}
+                      onClick={backButton}
+                    >
+                      <Icon.ArrowLeft /> Pembayaran
+                    </button>
                   </Col>
-                  {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                  <div className="col-md-8">
+                    <div className="state-payment">
+                      <div className="oneone">1</div>
+                      <h5 className="fs-6">Pilih Metode</h5>
+                      <img src={Rect} />
+                      <div className="onetwo">2</div>
+                      <h5 className="fs-6">Bayar</h5>
+                      <img src={Rect} />
+                      <div className="onethree">3</div>
+                      <h5 className="fs-6">Tiket</h5>
+                    </div>
+                  </div>
                 </Row>
               </Container>
               <Container className="d-flex justify-content-center">
@@ -153,11 +177,24 @@ const Payment = () => {
                       <Icon.ArrowLeft /> Pembayaran
                     </button>
                   </Col>
-                  {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                  <Col className="me-5">
+                    <div>
+                      <div className="state-payment">
+                        <div className="twoone">1</div>
+                        <h5 className="fs-6">Pilih Metode</h5>
+                        <img src={Rect} alt="-" />
+                        <div className="twotwo">2</div>
+                        <h5 className="fs-6">Bayar</h5>
+                        <img src={Rect} alt="-" />
+                        <div className="twothree">3</div>
+                        <h5 className="fs-6">Tiket</h5>
+                      </div>
+                    </div>
+                  </Col>
                 </Row>
               </Container>
-              <Row>
-                <Col>
+              <Row className="m-4">
+                <Col className="ms-5">
                   <PaymentCountdown />
                   <Rekening amountTransfer={orderData.total_price} />
                   <Instruction />
@@ -202,7 +239,67 @@ const Payment = () => {
                       </button>
                       <h6>Order Id : {orderId}</h6>
                     </Col>
-                    {/* <Col className="text-end me-5">1 Pilih Metode -- 2 Bayar -- 3 Tiket</Col> */}
+                    <Col>
+                      <div className="col-md-8">
+                        <div className="state-payment">
+                          <div className="twoone">1</div>
+                          <h5 className="fs-6">Pilih Metode</h5>
+                          <img src={Rect} alt="-" />
+                          <div className="twotwo">2</div>
+                          <h5 className="fs-6">Bayar</h5>
+                          <img src={Rect} alt="-" />
+                          <div className="twothree">3</div>
+                          <h5 className="fs-6">Tiket</h5>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+                <Container>
+                  <Row className="m-4">
+                    <Col className="ms-5">
+                      <PaymentCountdown />
+                      <Rekening amountTransfer={orderData.total_price} />
+                      <Instruction />
+                    </Col>
+                    <Col>
+                      <Card style={{ width: 405, height: 500 }}>
+                        <Card.Body className="p-3">
+                          <Row>
+                            <Col>
+                              <h6 className="fw-bold">Konfirmasi Pembayaran</h6>
+                            </Col>
+                            <Col>
+                              <ShortCountdown />
+                            </Col>
+                          </Row>
+                          <Row>
+                            <h6 className="fw-normal ">
+                              Terima kasih telah melakukan konfirmasi
+                              pembayaran. Pembayaranmu akan segera kami cek
+                              tunggu kurang lebih 10 menit untuk mendapatkan
+                              konfirmasi.
+                            </h6>
+                          </Row>
+                          <Row>
+                            <h6 className="fw-bold">Upload Bukti Pembayaran</h6>
+                          </Row>
+                          <Row>
+                            <h6 className="fw-normal ">
+                              Untuk membantu kami lebih cepat melakukan
+                              pengecekan. Kamu bisa upload bukti bayarmu
+                            </h6>
+                          </Row>
+                          <Row>
+                            <Col style={{ display: "flex" }}>
+                              <div className="d-grid">
+                                <ButtonUpload />
+                              </div>
+                            </Col>
+                          </Row>
+                        </Card.Body>
+                      </Card>
+                    </Col>
                   </Row>
                 </Container>
                 <Col>

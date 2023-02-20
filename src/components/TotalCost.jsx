@@ -37,7 +37,7 @@ const RincianBiaya = ({
                 {carCategory === "large" && "6 - 8 orang"}
               </h6>
               <div>
-                <Row className="mt-5 mb-4">
+                <Row className="mt-2">
                   <Col>
                     <h6>Total</h6>
                   </Col>
@@ -117,6 +117,15 @@ const RincianBiaya = ({
                     <h6 className="text-end fw-bold">
                       {formatter.format(totalPrice)}
                     </h6>
+                  </Col>
+                  <Col>
+                    <button
+                      className="green-button justify-content-center mt-2"
+                      variant="success"
+                      onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
+                    >
+                      Bayar
+                    </button>
                   </Col>
                 </Row>
               </div>
