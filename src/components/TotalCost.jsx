@@ -1,13 +1,21 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import { STEPS, setStep } from "../store/features/rentSlice";
-import { useDispatch } from "react-redux";
+import { STEPS, setStep, selectBank } from "../store/features/rentSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { ListGroupItem, Row, Col } from "react-bootstrap";
 import "../assets/css/payment.css";
 import * as Icon from "react-feather";
 
-const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays }) => {
+const RincianBiaya = ({
+  carName,
+  totalPrice,
+  carPrice,
+  carCategory,
+  totalDays,
+}) => {
+  const bank = useSelector(selectBank);
+  console.log(bank);
   const dispatch = useDispatch();
   const formatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -34,7 +42,9 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                     <h6>Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bolder">{formatter.format(totalPrice)}</h6>
+                    <h6 className="text-end fw-bolder">
+                      {formatter.format(totalPrice)}
+                    </h6>
                   </Col>
                 </Row>
                 <div>
@@ -49,13 +59,16 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                       {" "}
                       <ul>
                         <li className="fs-6 fw-normal text-dark">
-                          Sewa Mobil {formatter.format(carPrice)} x {totalDays} Hari
+                          Sewa Mobil {formatter.format(carPrice)} x {totalDays}{" "}
+                          Hari
                         </li>
                       </ul>
                     </Col>
                     <Col>
                       {" "}
-                      <h6 className="text-end fw-normal">{formatter.format(totalPrice)}</h6>
+                      <h6 className="text-end fw-normal">
+                        {formatter.format(totalPrice)}
+                      </h6>
                     </Col>
                   </Row>
                 </div>
@@ -66,14 +79,22 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                       {" "}
                       <ul>
                         <li className="fs-6 fw-normal text-dark">Pajak</li>
-                        <li className="fs-6 fw-normal text-dark">Biaya makan sopir</li>
+                        <li className="fs-6 fw-normal text-dark">
+                          Biaya makan sopir
+                        </li>
                       </ul>
                     </Col>
                     <Col>
-                      <h6 style={{ color: "#5CB85F" }} className="fw-normal text-end">
+                      <h6
+                        style={{ color: "#5CB85F" }}
+                        className="fw-normal text-end"
+                      >
                         Termasuk
                       </h6>
-                      <h6 style={{ color: "#5CB85F" }} className="fw-normal text-end">
+                      <h6
+                        style={{ color: "#5CB85F" }}
+                        className="fw-normal text-end"
+                      >
                         Termasuk
                       </h6>
                     </Col>
@@ -93,11 +114,18 @@ const RincianBiaya = ({ carName, totalPrice, carPrice, carCategory, totalDays })
                     <h6 className="text-start fw-bold">Total</h6>
                   </Col>
                   <Col>
-                    <h6 className="text-end fw-bold">{formatter.format(totalPrice)}</h6>
+                    <h6 className="text-end fw-bold">
+                      {formatter.format(totalPrice)}
+                    </h6>
                   </Col>
                 </Row>
               </div>
-              <button className="green-button justify-content-center mt-2" variant="success" onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
+              <button
+                className="green-button justify-content-center mt-2 confirm-payment-btn"
+                variant="success"
+                onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
+                disabled={bank === "" ? true : false}
+              >
                 Bayar
               </button>{" "}
             </ListGroupItem>

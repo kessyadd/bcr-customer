@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Figure } from "react-bootstrap";
+import { Form, Figure, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useAsyncError, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import APIOrder from "../apis/customer/APIOrder";
-import { selectIsSlip, setIsSlip, setOrderData } from "../store/features/rentSlice";
+import {
+  selectIsSlip,
+  setIsSlip,
+  setOrderData,
+} from "../store/features/rentSlice";
 import UploadPayment from "../assets/img/frame39.png";
 import "../assets/css/payment.css";
 
@@ -13,10 +17,6 @@ const ButtonUpload = (props) => {
   const navigate = useNavigate();
   const isSlip = useSelector(selectIsSlip);
   const [invoiceImage, setInvoiceImage] = useState();
-
-  const state = useSelector((state) => state.rent);
-  // const totalDays = state.totalDays;
-  // console.log(totalDays);
   const hiddenFileInput = React.useRef(null);
   const orderId = params.orderId;
 
@@ -61,22 +61,54 @@ const ButtonUpload = (props) => {
 
   return (
     <>
-      <Figure className="align-item-center">{invoiceImage ? <Figure.Image width={296} height={162} alt="Invoice" src={invoiceImage} /> : <Figure.Image width={296} height={162} alt="Invoice" src={UploadPayment} />}</Figure>
-      <Form onSubmit={onSubmit}>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control name="slip" type="file" ref={hiddenFileInput} onChange={handleChange} style={{ display: "none" }} />
-        </Form.Group>
-        {isSlip === "false" && (
-          <button className="green-button" variant="success" onClick={handleClick}>
-            Upload
-          </button>
-        )}
-        {isSlip === "true" && (
-          <button className="green-button" variant="success" type="submit">
-            Konfirmasi
-          </button>
-        )}
-      </Form>
+      <Row>
+        <Col>
+          <Figure>
+            {invoiceImage ? (
+              <Figure.Image
+                width={296}
+                height={162}
+                alt="Invoice"
+                src={invoiceImage}
+              />
+            ) : (
+              <Figure.Image
+                width={296}
+                height={162}
+                alt="Invoice"
+                src={UploadPayment}
+              />
+            )}
+          </Figure>
+        </Col>
+        <Col>
+          <Form onSubmit={onSubmit}>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="slip"
+                type="file"
+                ref={hiddenFileInput}
+                onChange={handleChange}
+                style={{ display: "none" }}
+              />
+            </Form.Group>
+            {isSlip === "false" && (
+              <button
+                className="green-button"
+                variant="success"
+                onClick={handleClick}
+              >
+                Upload
+              </button>
+            )}
+            {isSlip === "true" && (
+              <button className="green-button" variant="success" type="submit">
+                Konfirmasi
+              </button>
+            )}
+          </Form>
+        </Col>
+      </Row>
     </>
   );
 };

@@ -13,7 +13,7 @@ import PaymentCountdown from "../components/PaymentCountdown";
 import Rekening from "../components/Rekening";
 import Instruction from "../components/Instruction";
 import ButtonUpload from "../components/ButtonUpload";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import * as Icon from "react-feather";
 import CustomHemlet from "../components/CustomHelmet";
 
@@ -27,8 +27,6 @@ const Payment = () => {
   const [endDate, setEndDate] = useState();
   const [totalDays, setTotalDays] = useState();
 
-  const navigate = useNavigate();
-
   React.useEffect(() => {
     const fetchOrderData = async (orderId) => {
       try {
@@ -38,13 +36,24 @@ const Payment = () => {
           setOrderData(result.data);
           console.log(result.data.start_rent_at);
           const startDateTemp = new Date(result.data.start_rent_at);
-          const formatStartDate = startDateTemp.getDate() + "-" + (startDateTemp.getMonth() + 1) + "-" + startDateTemp.getFullYear();
+          const formatStartDate =
+            startDateTemp.getDate() +
+            "-" +
+            (startDateTemp.getMonth() + 1) +
+            "-" +
+            startDateTemp.getFullYear();
           setStartDate(formatStartDate);
           const endDateTemp = new Date(result.data.finish_rent_at);
-          const formatEndDate = endDateTemp.getDate() + "-" + (endDateTemp.getMonth() + 1) + "-" + endDateTemp.getFullYear();
+          const formatEndDate =
+            endDateTemp.getDate() +
+            "-" +
+            (endDateTemp.getMonth() + 1) +
+            "-" +
+            endDateTemp.getFullYear();
           setEndDate(formatEndDate);
 
-          let Difference_In_Time = endDateTemp.getTime() - startDateTemp.getTime();
+          let Difference_In_Time =
+            endDateTemp.getTime() - startDateTemp.getTime();
           console.log(Difference_In_Time);
           let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
           console.log(Difference_In_Days);
@@ -93,7 +102,9 @@ const Payment = () => {
                     </Row>
                     <Row>
                       <Col lg={3} sm={12}>
-                        <h6 className="text-black-50 ps-3">{orderData.Car.name}</h6>
+                        <h6 className="text-black-50 ps-3">
+                          {orderData.Car.name}
+                        </h6>
                       </Col>
                       <Col lg={3} sm={12}>
                         <h6 className="text-black-50 ps-3">
@@ -118,7 +129,13 @@ const Payment = () => {
                   <ChoosePayment />
                 </Col>
                 <Col xs={6} md={4}>
-                  <TotalCost carName={orderData.Car.name} totalPrice={orderData.total_price} carPrice={orderData.Car.price} carCategory={orderData.Car.category} totalDays={totalDays} />
+                  <TotalCost
+                    carName={orderData.Car.name}
+                    totalPrice={orderData.total_price}
+                    carPrice={orderData.Car.price}
+                    carCategory={orderData.Car.category}
+                    totalDays={totalDays}
+                  />
                 </Col>
               </Row>
             </Container>
@@ -129,7 +146,10 @@ const Payment = () => {
               <Container>
                 <Row className="m-4">
                   <Col className="ms-5">
-                    <button style={{ border: "none", background: "white" }} onClick={() => dispatch(setStep(STEPS.SELECT_DATE))}>
+                    <button
+                      style={{ border: "none", background: "white" }}
+                      onClick={() => dispatch(setStep(STEPS.SELECT_DATE))}
+                    >
                       <Icon.ArrowLeft /> Pembayaran
                     </button>
                   </Col>
@@ -145,9 +165,18 @@ const Payment = () => {
                 <Col>
                   <Card style={{ width: 405, height: 148 }}>
                     <Card.Body className="p-3">
-                      <h6 className="fs-6 mb-4">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</h6>
+                      <h6 className="fs-6 mb-4">
+                        Klik konfirmasi pembayaran untuk mempercepat proses
+                        pengecekan
+                      </h6>
                       <div className="d-grid">
-                        <button className="green-button" variant="success" onClick={() => dispatch(setStep(STEPS.PAYMENT_SUCCESS))}>
+                        <button
+                          className="green-button"
+                          variant="success"
+                          onClick={() =>
+                            dispatch(setStep(STEPS.PAYMENT_SUCCESS))
+                          }
+                        >
                           Konfirmasi Pembayaran
                         </button>
                       </div>
@@ -163,7 +192,10 @@ const Payment = () => {
                 <Container>
                   <Row className="m-4">
                     <Col className="ms-5">
-                      <button style={{ border: "none", background: "white" }} onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}>
+                      <button
+                        style={{ border: "none", background: "white" }}
+                        onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
+                      >
                         <h6>
                           <Icon.ArrowLeft /> BCA Transfer
                         </h6>
@@ -179,19 +211,26 @@ const Payment = () => {
                   <Instruction />
                 </Col>
                 <Col>
-                  <Card style={{ width: 405, height: 474 }}>
+                  <Card style={{ width: 405 }}>
                     <Card.Body className="p-3">
                       <Row>
                         <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</h6>
+                        <h6 className="fw-normal ">
+                          Terima kasih telah melakukan konfirmasi pembayaran.
+                          Pembayaranmu akan segera kami cek tunggu kurang lebih
+                          10 menit untuk mendapatkan konfirmasi.
+                        </h6>
                       </Row>
                       <Row>
                         <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
                       </Row>
                       <Row>
-                        <h6 className="fw-normal ">Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</h6>
+                        <h6 className="fw-normal ">
+                          Untuk membantu kami lebih cepat melakukan pengecekan.
+                          Kamu bisa upload bukti bayarmu
+                        </h6>
                       </Row>
                       <Row>
                         <Col>
