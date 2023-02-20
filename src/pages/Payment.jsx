@@ -263,7 +263,7 @@ const Payment = () => {
                       <Instruction />
                     </Col>
                     <Col>
-                      <Card style={{ width: 405, height: 500 }}>
+                      <Card style={{ width: 405 }}>
                         <Card.Body className="p-3">
                           <Row>
                             <Col>
@@ -302,43 +302,6 @@ const Payment = () => {
                     </Col>
                   </Row>
                 </Container>
-                <Col>
-                  <PaymentCountdown />
-                  <Rekening amountTransfer={orderData.total_price} />
-                  <Instruction />
-                </Col>
-                <Col>
-                  <Card style={{ width: 405 }}>
-                    <Card.Body className="p-3">
-                      <Row>
-                        <h5 className="fw-bold">Konfirmasi Pembayaran</h5>
-                      </Row>
-                      <Row>
-                        <h6 className="fw-normal ">
-                          Terima kasih telah melakukan konfirmasi pembayaran.
-                          Pembayaranmu akan segera kami cek tunggu kurang lebih
-                          10 menit untuk mendapatkan konfirmasi.
-                        </h6>
-                      </Row>
-                      <Row>
-                        <h5 className="fw-bold">Upload Bukti Pembayaran</h5>
-                      </Row>
-                      <Row>
-                        <h6 className="fw-normal ">
-                          Untuk membantu kami lebih cepat melakukan pengecekan.
-                          Kamu bisa upload bukti bayarmu
-                        </h6>
-                      </Row>
-                      <Row>
-                        <Col>
-                          <div className="d-grid">
-                            <ButtonUpload />
-                          </div>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
               </Row>
             </Container>
           )}

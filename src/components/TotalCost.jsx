@@ -120,23 +120,16 @@ const RincianBiaya = ({
                   </Col>
                   <Col>
                     <button
-                      className="green-button justify-content-center mt-2"
+                      className="green-button justify-content-center mt-2 confirm-payment-btn"
                       variant="success"
                       onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
+                      disabled={bank === "" ? true : false}
                     >
                       Bayar
                     </button>
                   </Col>
                 </Row>
               </div>
-              <button
-                className="green-button justify-content-center mt-2 confirm-payment-btn"
-                variant="success"
-                onClick={() => dispatch(setStep(STEPS.CONFIRM_PAYMENT))}
-                disabled={bank === "" ? true : false}
-              >
-                Bayar
-              </button>{" "}
             </ListGroupItem>
           </ListGroup>
         </Card.Body>
