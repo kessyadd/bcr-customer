@@ -4,7 +4,8 @@ const APIOrder = {
   //Create new car order
   createNewCarOrder: async ({ start_rent_at, finish_rent_at, car_id }) => {
     const params = { start_rent_at, finish_rent_at, car_id };
-    const res = await axiosCustomerInstance.post("/order", { params });
+    console.log(params);
+    const res = await axiosCustomerInstance.post("/order", params);
     return res;
   },
 
@@ -20,9 +21,18 @@ const APIOrder = {
     return res;
   },
 
-  //Upload payment reciept (slip data hasn't been included)
-  uploadPaymentSlip: async (orderId) => {
-    const res = await axiosCustomerInstance.put(`/order/${orderId}/slip`);
+  //Upload payment reciept
+  uploadPaymentSlip: async (orderId, formData) => {
+    console.log(formData);
+    const res = await axiosCustomerInstance.put(
+      `/order/${orderId}/slip`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
     return res;
   },
 

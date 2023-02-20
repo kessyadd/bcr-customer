@@ -1,12 +1,11 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../assets/css/signIn.css";
 import APIRegis from "../apis/customer/APIRegistration";
-import Desktop from "../assets/img/Group83.png";
 import GrayButton from "../assets/img/rectangle.png";
+import CustomHemlet from "../components/CustomHelmet";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -45,6 +44,7 @@ const SignUp = () => {
 
   return (
     <>
+      <CustomHemlet />
       <Container className="container-fluid">
         <Row>
           <Col lg={6} className="sign-in p-5 justify-items-center" style={{ display: "flex", alignItems: "center" }}>

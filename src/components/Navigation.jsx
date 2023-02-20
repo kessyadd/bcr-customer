@@ -15,36 +15,20 @@ const expand = "sm";
 const Navigation = () => {
   return (
     <>
-      <Navbar
-        key={expand}
-        variant="light"
-        expand={expand}
-        className="text-black sticky-top nav-color"
-        style={{ zIndex: "2" }}
-      >
+      <Navbar key={expand} variant="light" expand={expand} className="text-black sticky-top nav-color" style={{ zIndex: "2" }}>
         <Container fluid className="px-5">
           <Navbar.Brand as={Link} to="/">
-            <img
-              src={Logo}
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            />
+            <img src={Logo} className="d-inline-block align-top" alt="React Bootstrap logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-${expand}`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-            placement="end"
-          >
+          <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Menu
-              </Offcanvas.Title>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/#ourServices" className="color-black">
-                  Our Service
+                  Our Services
                 </Nav.Link>
                 <Nav.Link href="/#whyUs" className="color-black">
                   Why Us
